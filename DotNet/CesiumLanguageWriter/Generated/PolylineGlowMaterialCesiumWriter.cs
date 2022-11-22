@@ -19,20 +19,29 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>glowPower</c> property.
         /// </summary>
+        [NotNull]
         public const string GlowPowerPropertyName = "glowPower";
 
         /// <summary>
         /// The name of the <c>taperPower</c> property.
         /// </summary>
+        [NotNull]
         public const string TaperPowerPropertyName = "taperPower";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_glowPower = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GlowPowerPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_taperPower = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(TaperPowerPropertyName), false);
 
         /// <summary>

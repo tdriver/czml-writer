@@ -1,5 +1,10 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ObjectHelper.notEquals;
+import static java.lang.Math.abs;
+import static java.lang.Math.floor;
+import static java.lang.Math.log10;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.text.DecimalFormat;
@@ -242,7 +247,7 @@ public final class FormatHelper {
                 if (forceExponentSign && result.length() >= endIndex + 1) {
                     // if we need to, add the exponent symbol for positive
                     // exponents
-                    if (!"-".equals(result.substring(endIndex, endIndex + 1))) {
+                    if (notEquals(result.substring(endIndex, endIndex + 1), "-")) {
                         result.insert(endIndex, "+");
                     }
                 }
@@ -277,7 +282,7 @@ public final class FormatHelper {
 
         @Override
         public StringBuffer format(double number, StringBuffer toAppendTo, FieldPosition pos) {
-            double exponentDigits = number == 0.0 ? 0.0 : Math.floor(Math.log10(number));
+            double exponentDigits = number == 0.0 ? 0.0 : floor(log10(abs(number)));
 
             if (exponentDigits > -5 && exponentDigits < 17) {
                 return format.format(number, toAppendTo, pos);

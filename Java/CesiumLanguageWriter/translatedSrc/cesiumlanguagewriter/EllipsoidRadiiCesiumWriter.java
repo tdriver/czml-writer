@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code EllipsoidRadii} to a {@link CesiumOutputStream}. A {@code EllipsoidRadii} is the radii of an ellipsoid.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWriter<EllipsoidRadiiCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWriter<EllipsoidRadiiCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */
+    @Nonnull
     public static final String CartesianPropertyName = "cartesian";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> m_asCartesian;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> m_asCartesian;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -156,19 +161,21 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> createCartesian3() {
         return CesiumValuePropertyAdaptors.<EllipsoidRadiiCesiumWriter> createCartesian3(this);
     }
@@ -177,19 +184,21 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<EllipsoidRadiiCesiumWriter> createReference(this);
     }

@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code NearFarScalar} to a {@link CesiumOutputStream}. A {@code NearFarScalar} is a numeric value which will be linearly interpolated between two values based on an object's distance from the camera, in eye coordinates. The computed value will interpolate between the near value and the far value while the camera distance falls between the near distance and the far distance, and will be clamped to the near or far value while the distance is less than the near distance or greater than the far distance, respectively.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWriter<NearFarScalarCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumNearFarScalarValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWriter<NearFarScalarCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumNearFarScalarValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code nearFarScalar} property.
     */
+    @Nonnull
     public static final String NearFarScalarPropertyName = "nearFarScalar";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asNearFarScalar;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asNearFarScalar;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -167,19 +172,21 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     * Returns a wrapper for this instance that implements {@link ICesiumNearFarScalarValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> asNearFarScalar() {
         return m_asNearFarScalar.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> createAsNearFarScalar() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createNearFarScalar") {
-                    public cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
-                        return createNearFarScalar();
-                    }
-                }, false);
+        return new Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(new Func1<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createNearFarScalar") {
+            public CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
+                return createNearFarScalar();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> createNearFarScalar() {
         return CesiumValuePropertyAdaptors.<NearFarScalarCesiumWriter> createNearFarScalar(this);
     }
@@ -188,19 +195,21 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<NearFarScalarCesiumWriter> createReference(this);
     }

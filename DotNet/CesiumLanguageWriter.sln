@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriterTests", "CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj", "{1D5CE515-81E3-47AE-8D02-3767DD8CB07E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CesiumLanguageWriterTests", "CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj", "{1D5CE515-81E3-47AE-8D02-3767DD8CB07E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F4E-CD74-44F3-9A80-604BCA10FB67}"
 	ProjectSection(SolutionItems) = preProject
@@ -70,6 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\PolylineGlowMaterial.json = ..\Schema\PolylineGlowMaterial.json
 		..\Schema\PolylineMaterial.json = ..\Schema\PolylineMaterial.json
 		..\Schema\PolylineOutlineMaterial.json = ..\Schema\PolylineOutlineMaterial.json
+		..\Schema\PolylineVolume.json = ..\Schema\PolylineVolume.json
 		..\Schema\Position.json = ..\Schema\Position.json
 		..\Schema\PositionList.json = ..\Schema\PositionList.json
 		..\Schema\PositionListOfLists.json = ..\Schema\PositionListOfLists.json
@@ -79,6 +80,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Rotation.json = ..\Schema\Rotation.json
 		..\Schema\Scale.json = ..\Schema\Scale.json
 		..\Schema\ShadowMode.json = ..\Schema\ShadowMode.json
+		..\Schema\Shape.json = ..\Schema\Shape.json
 		..\Schema\SolidColorMaterial.json = ..\Schema\SolidColorMaterial.json
 		..\Schema\String.json = ..\Schema\String.json
 		..\Schema\StripeMaterial.json = ..\Schema\StripeMaterial.json
@@ -158,6 +160,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\.appveyor.yml = ..\.appveyor.yml
 		..\.editorconfig = ..\.editorconfig
+		Directory.build.props = Directory.build.props
+		Directory.build.targets = Directory.build.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueProperties", "ValueProperties", "{BAE894F9-C91D-4F94-8CF0-6F336B2D9C4C}"
@@ -165,6 +169,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueProperties", "ValuePro
 		..\Schema\ValueProperties\ArcTypeValueProperty.json = ..\Schema\ValueProperties\ArcTypeValueProperty.json
 		..\Schema\ValueProperties\BooleanValueProperty.json = ..\Schema\ValueProperties\BooleanValueProperty.json
 		..\Schema\ValueProperties\BoundingRectangleValueProperty.json = ..\Schema\ValueProperties\BoundingRectangleValueProperty.json
+		..\Schema\ValueProperties\Cartesian2ListValueProperty.json = ..\Schema\ValueProperties\Cartesian2ListValueProperty.json
 		..\Schema\ValueProperties\Cartesian2ValueProperty.json = ..\Schema\ValueProperties\Cartesian2ValueProperty.json
 		..\Schema\ValueProperties\Cartesian3ListOfListsValueProperty.json = ..\Schema\ValueProperties\Cartesian3ListOfListsValueProperty.json
 		..\Schema\ValueProperties\Cartesian3ListValueProperty.json = ..\Schema\ValueProperties\Cartesian3ListValueProperty.json
@@ -215,6 +220,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Values", "Values", "{A9C205
 		..\Schema\Values\ArcTypeValue.json = ..\Schema\Values\ArcTypeValue.json
 		..\Schema\Values\BooleanValue.json = ..\Schema\Values\BooleanValue.json
 		..\Schema\Values\BoundingRectangleValue.json = ..\Schema\Values\BoundingRectangleValue.json
+		..\Schema\Values\Cartesian2ListValue.json = ..\Schema\Values\Cartesian2ListValue.json
 		..\Schema\Values\Cartesian2Value.json = ..\Schema\Values\Cartesian2Value.json
 		..\Schema\Values\Cartesian3ListOfListsValue.json = ..\Schema\Values\Cartesian3ListOfListsValue.json
 		..\Schema\Values\Cartesian3ListValue.json = ..\Schema\Values\Cartesian3ListValue.json

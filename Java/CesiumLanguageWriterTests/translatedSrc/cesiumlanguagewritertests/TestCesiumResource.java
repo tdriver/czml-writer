@@ -19,10 +19,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumResource {
@@ -58,34 +58,34 @@ public class TestCesiumResource {
     public final void testFromStream() {
         // arbitrary bytes
         byte[] contents = {
-                0,
-                1,
-                2,
-                3,
-                4
+            0,
+            1,
+            2,
+            3,
+            4
         };
         MemoryStream stream = new MemoryStream(contents);
         CesiumResource resource = CesiumResource.fromStream(stream, CesiumImageFormat.PNG);
         Assert.assertNotNull(resource);
         final String expected = "data:image/png;base64,AAECAwQ=";
-        Assert.assertEquals(expected, resource.getUri());
+        AssertHelper.assertEquals(expected, resource.getUri());
     }
 
     @Test
     public final void testFromStreamMimeType() {
         // arbitrary bytes
         byte[] contents = {
-                0,
-                1,
-                2,
-                3,
-                4
+            0,
+            1,
+            2,
+            3,
+            4
         };
         MemoryStream stream = new MemoryStream(contents);
         CesiumResource resource = CesiumResource.fromStream(stream, "application/octet-stream");
         Assert.assertNotNull(resource);
         final String expected = "data:application/octet-stream;base64,AAECAwQ=";
-        Assert.assertEquals(expected, resource.getUri());
+        AssertHelper.assertEquals(expected, resource.getUri());
     }
 
     @Nonnull

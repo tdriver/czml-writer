@@ -1,5 +1,8 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static agi.foundation.compatibility.ArgumentOutOfRangeException.assertNonNegative;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.text.Collator;
@@ -231,8 +234,8 @@ public final class StringHelper {
      * Do the work of splitting the string according to the specified regex and options.
      */
     private static String[] split(@Nonnull String s, @Nullable String regex, @Nonnull StringSplitOptions options, int count) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(options, "options");
+        assertNonNull(s, "s");
+        assertNonNull(options, "options");
 
         boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
         if (count == 0 || removeEmptyEntries && s.length() == 0)
@@ -318,7 +321,7 @@ public final class StringHelper {
      */
     @Nonnull
     public static String remove(String s, int startIndex, int count) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
         if (count < 0)
@@ -383,9 +386,8 @@ public final class StringHelper {
 
     @Nonnull
     private static String pad(@Nonnull String s, int totalWidth, char paddingChar, @Nonnull PaddingType paddingType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        if (totalWidth < 0)
-            throw new ArgumentOutOfRangeException("totalWidth", "Non-negative number required.");
+        assertNonNull(s, "s");
+        assertNonNegative(totalWidth, "totalWidth");
 
         int numPaddingChars = totalWidth - s.length();
         if (numPaddingChars <= 0)
@@ -536,6 +538,7 @@ public final class StringHelper {
      * @return A copy of format in which the format items have been replaced by the string
      *         representation of the corresponding objects in args.
      */
+    @Nonnull
     public static String format(@Nonnull String format, @Nonnull Object... args) {
         return format(null, format, args);
     }
@@ -554,9 +557,10 @@ public final class StringHelper {
      * @return A copy of format in which the format items have been replaced by the string
      *         representation of the corresponding objects in args.
      */
+    @Nonnull
     public static String format(@Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
-        ArgumentNullException.assertNonNull(format, "format");
-        ArgumentNullException.assertNonNull(args, "args");
+        assertNonNull(format, "format");
+        assertNonNull(args, "args");
 
         return new Helper(locale, format, args).format();
     }
@@ -584,6 +588,7 @@ public final class StringHelper {
             this.result = new StringBuilder();
         }
 
+        @Nonnull
         public String format() {
             if (length == 0)
                 return empty;
@@ -784,8 +789,8 @@ public final class StringHelper {
      * @return true if value matches the beginning of this string; otherwise, false.
      */
     public static boolean startsWith(@Nonnull String s, @Nonnull String value) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         return s.startsWith(value);
     }
@@ -805,8 +810,8 @@ public final class StringHelper {
      *         otherwise, false.
      */
     public static boolean startsWith(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -816,22 +821,6 @@ public final class StringHelper {
         }
 
         return s.startsWith(value);
-    }
-
-    /**
-     * Determines whether the end of this string instance matches the specified string.
-     *
-     * @param s
-     *            The string.
-     * @param value
-     *            The string to compare.
-     * @return true if value matches the end of this string; otherwise, false.
-     */
-    public static boolean endsWith(@Nonnull String s, @Nonnull String value) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
-
-        return s.endsWith(value);
     }
 
     /**
@@ -849,8 +838,8 @@ public final class StringHelper {
      *         false.
      */
     public static boolean endsWith(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -877,8 +866,32 @@ public final class StringHelper {
      *         it is not. If value is Empty, the return value is 0.
      */
     public static int indexOf(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        return indexOf(s, value, 0, comparisonType);
+    }
+
+    /**
+     * Reports the index of the first occurrence of the specified string in the current
+     * String object. Parameters specify the starting search position in the current
+     * string and the type of search to use for the specified string.
+     *
+     * @param s
+     *            The String to search.
+     * @param value
+     *            The String object to seek.
+     * @param startIndex
+     *            The search starting position.
+     * @param comparisonType
+     *            One of the StringComparison values.
+     * @return The index position of the value parameter if that string is found, or -1 if
+     *         it is not. If value is Empty, the return value is startIndex.
+     */
+    public static int indexOf(@Nonnull String s, @Nonnull String value, int startIndex, @Nonnull StringComparison comparisonType) {
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
+        if (startIndex < 0)
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
+        if (startIndex > s.length())
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string.");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -887,7 +900,7 @@ public final class StringHelper {
             value = value.toLowerCase(locale);
         }
 
-        return s.indexOf(value);
+        return s.indexOf(value, startIndex);
     }
 
     /**
@@ -900,7 +913,7 @@ public final class StringHelper {
      */
     @Nonnull
     public static String toLowerInvariant(@Nonnull String s) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         return s.toLowerCase(CultureInfoHelper.getInvariantCulture());
     }
 
@@ -938,7 +951,7 @@ public final class StringHelper {
      */
     @Nonnull
     public static String substring(@Nonnull String s, int startIndex, int length) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
 
@@ -974,8 +987,8 @@ public final class StringHelper {
      */
     @Nonnull
     public static String replace(@Nonnull String s, @Nonnull String oldValue, @Nullable String newValue) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(oldValue, "oldValue");
+        assertNonNull(s, "s");
+        assertNonNull(oldValue, "oldValue");
 
         if (empty.equals(oldValue))
             throw new ArgumentException("String cannot be of zero length.", "oldValue");
@@ -1041,9 +1054,9 @@ public final class StringHelper {
      */
     @Nonnull
     public static StringBuilder appendFormat(@Nonnull StringBuilder builder, @Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
-        ArgumentNullException.assertNonNull(builder, "builder");
-        ArgumentNullException.assertNonNull(format, "format");
-        ArgumentNullException.assertNonNull(args, "args");
+        assertNonNull(builder, "builder");
+        assertNonNull(format, "format");
+        assertNonNull(args, "args");
 
         return builder.append(format(locale, format, args));
     }
@@ -1052,7 +1065,7 @@ public final class StringHelper {
      * Appends a specified number of copies of the string representation of a Unicode
      * character to a given instance.
      *
-     * @param s
+     * @param builder
      *            The StringBuilder
      * @param c
      *            The character to append
@@ -1061,12 +1074,12 @@ public final class StringHelper {
      * @return The StringBuilder after the append operation has completed.
      */
     @Nonnull
-    public static StringBuilder append(@Nonnull StringBuilder s, char c, int repeatCount) {
-        s.ensureCapacity(s.length() + repeatCount);
+    public static StringBuilder append(@Nonnull StringBuilder builder, char c, int repeatCount) {
+        builder.ensureCapacity(builder.length() + repeatCount);
         for (int i = 0; i < repeatCount; ++i) {
-            s.append(c);
+            builder.append(c);
         }
-        return s;
+        return builder;
     }
 
     /**
@@ -1086,5 +1099,10 @@ public final class StringHelper {
     @Nonnull
     public static StringBuilder append(@Nonnull StringBuilder builder, String value, int startIndex, int count) {
         return builder.append(value, startIndex, startIndex + count);
+    }
+
+    @Nonnull
+    static String nullToEmpty(@Nullable String s) {
+        return s == null ? empty : s;
     }
 }

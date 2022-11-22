@@ -9,22 +9,25 @@ import javax.annotation.Nullable;
 /**
  * The type of extrapolation to perform when outside the sample data range of an interpolatable property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumExtrapolationType implements Enumeration {
     /**
     * No extrapolation is performed; the property is undefined.
     */
-    NONE(0), /**
-             * Return the first or last sample value.
-             */
-    HOLD(1), /**
-             * Extrapolate the value.
-             */
+    NONE(0),
+    /**
+    * Return the first or last sample value.
+    */
+    HOLD(1),
+    /**
+    * Extrapolate the value.
+    */
     EXTRAPOLATE(2);
+
     private final int value;
 
     CesiumExtrapolationType(int value) {

@@ -2,12 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -16,10 +15,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelStyleCesiumWriter> {
@@ -27,23 +26,14 @@ public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelSt
     public final void labelStyleCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final CesiumLabelStyle expectedValue = CesiumLabelStyle.FILL_AND_OUTLINE;
-        {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
-            try {
-                {
-                    LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeLabelStyle(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression_0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<LabelStyleCesiumWriter> using$1 = new Using<LabelStyleCesiumWriter>(new LabelStyleCesiumWriter(expectedPropertyName))) {
+                final LabelStyleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeLabelStyle(expectedValue);
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedPropertyName, CesiumFormattingHelper.labelStyleToString(expectedValue));
         assertExpectedJson(tempCollection$0);
     }
@@ -54,27 +44,18 @@ public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelSt
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumLabelStyle expectedValue = CesiumLabelStyle.FILL_AND_OUTLINE;
-        {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
-            try {
-                {
-                    LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeLabelStyle(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression_1);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<LabelStyleCesiumWriter> using$1 = new Using<LabelStyleCesiumWriter>(new LabelStyleCesiumWriter(expectedPropertyName))) {
+                final LabelStyleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeLabelStyle(expectedValue);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$1, LabelStyleCesiumWriter.LabelStylePropertyName, CesiumFormattingHelper.labelStyleToString(expectedValue));
-        assertExpectedJson(expectedPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$0, LabelStyleCesiumWriter.LabelStylePropertyName, CesiumFormattingHelper.labelStyleToString(expectedValue));
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Override

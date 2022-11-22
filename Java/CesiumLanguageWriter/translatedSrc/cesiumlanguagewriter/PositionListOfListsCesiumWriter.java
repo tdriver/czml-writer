@@ -10,37 +10,46 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code PositionListOfLists} to a {@link CesiumOutputStream}. A {@code PositionListOfLists} is a list of lists of positions.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<PositionListOfListsCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ListOfListsValuePropertyWriter,
         ICesiumCartographicRadiansListOfListsValuePropertyWriter, ICesiumCartographicDegreesListOfListsValuePropertyWriter, ICesiumReferenceListOfListsValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */
+    @Nonnull
     public static final String CartesianPropertyName = "cartesian";
     /**
     * The name of the {@code cartographicRadians} property.
     */
+    @Nonnull
     public static final String CartographicRadiansPropertyName = "cartographicRadians";
     /**
     * The name of the {@code cartographicDegrees} property.
     */
+    @Nonnull
     public static final String CartographicDegreesPropertyName = "cartographicDegrees";
     /**
     * The name of the {@code references} property.
     */
+    @Nonnull
     public static final String ReferencesPropertyName = "references";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartesian;
-    private Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartographicRadians;
-    private Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartographicDegrees;
-    private Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asReferences;
+    @Nonnull
+    private final Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartesian;
+    @Nonnull
+    private final Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartographicRadians;
+    @Nonnull
+    private final Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartographicDegrees;
+    @Nonnull
+    private final Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asReferences;
 
     /**
     * Initializes a new instance.
@@ -134,19 +143,22 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ListOfListsValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartesian3ListOfLists") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
+        return new Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
+                new Func1<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartesian3ListOfLists") {
+                    public CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
                         return createCartesian3ListOfLists();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> createCartesian3ListOfLists() {
         return CesiumValuePropertyAdaptors.<PositionListOfListsCesiumWriter> createCartesian3ListOfLists(this);
     }
@@ -155,19 +167,22 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansListOfListsValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> asCartographicRadians() {
         return m_asCartographicRadians.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartographicRadians() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartographicRadiansListOfLists") {
-                    public cesiumlanguagewriter.advanced.CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
+        return new Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
+                new Func1<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartographicRadiansListOfLists") {
+                    public CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
                         return createCartographicRadiansListOfLists();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> createCartographicRadiansListOfLists() {
         return CesiumValuePropertyAdaptors.<PositionListOfListsCesiumWriter> createCartographicRadiansListOfLists(this);
     }
@@ -176,19 +191,22 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesListOfListsValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> asCartographicDegrees() {
         return m_asCartographicDegrees.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartographicDegrees() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartographicDegreesListOfLists") {
-                    public cesiumlanguagewriter.advanced.CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
+        return new Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
+                new Func1<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartographicDegreesListOfLists") {
+                    public CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
                         return createCartographicDegreesListOfLists();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> createCartographicDegreesListOfLists() {
         return CesiumValuePropertyAdaptors.<PositionListOfListsCesiumWriter> createCartographicDegreesListOfLists(this);
     }
@@ -197,19 +215,22 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceListOfListsValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> asReferences() {
         return m_asReferences.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsReferences() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createReferenceListOfLists") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
+        return new Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
+                new Func1<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createReferenceListOfLists") {
+                    public CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
                         return createReferenceListOfLists();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> createReferenceListOfLists() {
         return CesiumValuePropertyAdaptors.<PositionListOfListsCesiumWriter> createReferenceListOfLists(this);
     }

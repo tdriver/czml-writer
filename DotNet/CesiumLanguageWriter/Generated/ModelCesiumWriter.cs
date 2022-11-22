@@ -19,104 +19,155 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>gltf</c> property.
         /// </summary>
+        [NotNull]
         public const string GltfPropertyName = "gltf";
 
         /// <summary>
         /// The name of the <c>scale</c> property.
         /// </summary>
+        [NotNull]
         public const string ScalePropertyName = "scale";
 
         /// <summary>
         /// The name of the <c>minimumPixelSize</c> property.
         /// </summary>
+        [NotNull]
         public const string MinimumPixelSizePropertyName = "minimumPixelSize";
 
         /// <summary>
         /// The name of the <c>maximumScale</c> property.
         /// </summary>
+        [NotNull]
         public const string MaximumScalePropertyName = "maximumScale";
 
         /// <summary>
         /// The name of the <c>incrementallyLoadTextures</c> property.
         /// </summary>
+        [NotNull]
         public const string IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
 
         /// <summary>
         /// The name of the <c>runAnimations</c> property.
         /// </summary>
+        [NotNull]
         public const string RunAnimationsPropertyName = "runAnimations";
 
         /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
+        [NotNull]
         public const string ShadowsPropertyName = "shadows";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>silhouetteColor</c> property.
         /// </summary>
+        [NotNull]
         public const string SilhouetteColorPropertyName = "silhouetteColor";
 
         /// <summary>
         /// The name of the <c>silhouetteSize</c> property.
         /// </summary>
+        [NotNull]
         public const string SilhouetteSizePropertyName = "silhouetteSize";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>colorBlendMode</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorBlendModePropertyName = "colorBlendMode";
 
         /// <summary>
         /// The name of the <c>colorBlendAmount</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorBlendAmountPropertyName = "colorBlendAmount";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>nodeTransformations</c> property.
         /// </summary>
+        [NotNull]
         public const string NodeTransformationsPropertyName = "nodeTransformations";
 
         /// <summary>
         /// The name of the <c>articulations</c> property.
         /// </summary>
+        [NotNull]
         public const string ArticulationsPropertyName = "articulations";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_maximumScale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumScalePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_silhouetteColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(SilhouetteColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_silhouetteSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SilhouetteSizePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorBlendModeCesiumWriter> m_colorBlendMode = new Lazy<ColorBlendModeCesiumWriter>(() => new ColorBlendModeCesiumWriter(ColorBlendModePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_colorBlendAmount = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColorBlendAmountPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ArticulationsCesiumWriter> m_articulations = new Lazy<ArticulationsCesiumWriter>(() => new ArticulationsCesiumWriter(ArticulationsPropertyName), false);
 
         /// <summary>

@@ -10,26 +10,31 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Font} to a {@link CesiumOutputStream}. A {@code Font} is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumFontValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code font} property.
     */
+    @Nonnull
     public static final String FontPropertyName = "font";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> m_asFont;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> m_asFont;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -136,19 +141,21 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> imp
     * Returns a wrapper for this instance that implements {@link ICesiumFontValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumFontValuePropertyAdaptor<FontCesiumWriter> asFont() {
         return m_asFont.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> createAsFont() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(this,
-                "createFont") {
-            public cesiumlanguagewriter.advanced.CesiumFontValuePropertyAdaptor<FontCesiumWriter> invoke() {
+        return new Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(new Func1<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(this, "createFont") {
+            public CesiumFontValuePropertyAdaptor<FontCesiumWriter> invoke() {
                 return createFont();
             }
         }, false);
     }
 
+    @Nonnull
     private final CesiumFontValuePropertyAdaptor<FontCesiumWriter> createFont() {
         return CesiumValuePropertyAdaptors.<FontCesiumWriter> createFont(this);
     }
@@ -157,19 +164,21 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> imp
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<FontCesiumWriter> createReference(this);
     }

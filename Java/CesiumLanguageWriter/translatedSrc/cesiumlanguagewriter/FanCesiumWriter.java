@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
@@ -19,99 +19,119 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Fan} to a {@link CesiumOutputStream}. A {@code Fan} is a fan, which starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     /**
     * The name of the {@code show} property.
     */
+    @Nonnull
     public static final String ShowPropertyName = "show";
     /**
     * The name of the {@code directions} property.
     */
+    @Nonnull
     public static final String DirectionsPropertyName = "directions";
     /**
     * The name of the {@code radius} property.
     */
+    @Nonnull
     public static final String RadiusPropertyName = "radius";
     /**
     * The name of the {@code perDirectionRadius} property.
     */
+    @Nonnull
     public static final String PerDirectionRadiusPropertyName = "perDirectionRadius";
     /**
     * The name of the {@code material} property.
     */
+    @Nonnull
     public static final String MaterialPropertyName = "material";
     /**
     * The name of the {@code fill} property.
     */
+    @Nonnull
     public static final String FillPropertyName = "fill";
     /**
     * The name of the {@code outline} property.
     */
+    @Nonnull
     public static final String OutlinePropertyName = "outline";
     /**
     * The name of the {@code outlineColor} property.
     */
+    @Nonnull
     public static final String OutlineColorPropertyName = "outlineColor";
     /**
     * The name of the {@code outlineWidth} property.
     */
+    @Nonnull
     public static final String OutlineWidthPropertyName = "outlineWidth";
     /**
     * The name of the {@code numberOfRings} property.
     */
+    @Nonnull
     public static final String NumberOfRingsPropertyName = "numberOfRings";
-    private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
         }
     }, false);
-    private Lazy<DirectionListCesiumWriter> m_directions = new Lazy<cesiumlanguagewriter.DirectionListCesiumWriter>(new Func1<cesiumlanguagewriter.DirectionListCesiumWriter>() {
-        public cesiumlanguagewriter.DirectionListCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(new Func1<DirectionListCesiumWriter>() {
+        public DirectionListCesiumWriter invoke() {
             return new DirectionListCesiumWriter(DirectionsPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
+        public DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(RadiusPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_perDirectionRadius = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_perDirectionRadius = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(PerDirectionRadiusPropertyName);
         }
     }, false);
-    private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
-        public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(new Func1<MaterialCesiumWriter>() {
+        public MaterialCesiumWriter invoke() {
             return new MaterialCesiumWriter(MaterialPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_fill = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(FillPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_outline = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(OutlinePropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
-        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
+        public ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(OutlineColorPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
+        public DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(OutlineWidthPropertyName);
         }
     }, false);
-    private Lazy<IntegerCesiumWriter> m_numberOfRings = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
-        public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<IntegerCesiumWriter> m_numberOfRings = new Lazy<IntegerCesiumWriter>(new Func1<IntegerCesiumWriter>() {
+        public IntegerCesiumWriter invoke() {
             return new IntegerCesiumWriter(NumberOfRingsPropertyName);
         }
     }, false);
@@ -163,13 +183,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -178,13 +194,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -193,13 +205,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -209,13 +217,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -225,13 +229,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -257,13 +257,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values.
     */
     public final void writeDirectionsProperty(Iterable<Spherical> values) {
-        {
-            DirectionListCesiumWriter writer = openDirectionsProperty();
-            try {
-                writer.writeSpherical(values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DirectionListCesiumWriter> using$0 = new Using<DirectionListCesiumWriter>(openDirectionsProperty())) {
+            final DirectionListCesiumWriter writer = using$0.resource;
+            writer.writeSpherical(values);
         }
     }
 
@@ -272,13 +268,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values.
     */
     public final void writeDirectionsPropertyUnitSpherical(Iterable<UnitSpherical> values) {
-        {
-            DirectionListCesiumWriter writer = openDirectionsProperty();
-            try {
-                writer.writeUnitSpherical(values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DirectionListCesiumWriter> using$0 = new Using<DirectionListCesiumWriter>(openDirectionsProperty())) {
+            final DirectionListCesiumWriter writer = using$0.resource;
+            writer.writeUnitSpherical(values);
         }
     }
 
@@ -287,13 +279,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values.
     */
     public final void writeDirectionsPropertyCartesian(Iterable<Cartesian> values) {
-        {
-            DirectionListCesiumWriter writer = openDirectionsProperty();
-            try {
-                writer.writeCartesian(values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DirectionListCesiumWriter> using$0 = new Using<DirectionListCesiumWriter>(openDirectionsProperty())) {
+            final DirectionListCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(values);
         }
     }
 
@@ -302,13 +290,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values.
     */
     public final void writeDirectionsPropertyUnitCartesian(Iterable<UnitCartesian> values) {
-        {
-            DirectionListCesiumWriter writer = openDirectionsProperty();
-            try {
-                writer.writeUnitCartesian(values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DirectionListCesiumWriter> using$0 = new Using<DirectionListCesiumWriter>(openDirectionsProperty())) {
+            final DirectionListCesiumWriter writer = using$0.resource;
+            writer.writeUnitCartesian(values);
         }
     }
 
@@ -334,13 +318,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writeRadiusProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -350,13 +330,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -368,13 +344,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -383,13 +355,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeRadiusPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -398,13 +366,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeRadiusPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -414,13 +378,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeRadiusPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -430,13 +390,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openRadiusProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRadiusProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -462,13 +418,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writePerDirectionRadiusProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openPerDirectionRadiusProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openPerDirectionRadiusProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -477,13 +429,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writePerDirectionRadiusPropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openPerDirectionRadiusProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openPerDirectionRadiusProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -492,13 +440,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writePerDirectionRadiusPropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openPerDirectionRadiusProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openPerDirectionRadiusProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -508,13 +452,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writePerDirectionRadiusPropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openPerDirectionRadiusProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openPerDirectionRadiusProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -524,13 +464,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writePerDirectionRadiusPropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openPerDirectionRadiusProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openPerDirectionRadiusProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -573,13 +509,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writeFillProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openFillProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openFillProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -588,13 +520,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeFillPropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openFillProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openFillProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -603,13 +531,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openFillProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openFillProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -619,13 +543,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeFillPropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openFillProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openFillProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -635,13 +555,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeFillPropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openFillProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openFillProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -667,13 +583,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writeOutlineProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openOutlineProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openOutlineProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -682,13 +594,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeOutlinePropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openOutlineProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openOutlineProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -697,13 +605,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openOutlineProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openOutlineProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -713,13 +617,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeOutlinePropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openOutlineProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openOutlineProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -729,13 +629,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOutlinePropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openOutlineProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openOutlineProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -761,13 +657,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param color The color.
     */
     public final void writeOutlineColorProperty(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgba(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(color);
         }
     }
 
@@ -779,13 +671,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param alpha The alpha component in the range 0 to 255.
     */
     public final void writeOutlineColorProperty(int red, int green, int blue, int alpha) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgba(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(red, green, blue, alpha);
         }
     }
 
@@ -795,13 +683,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeOutlineColorProperty(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgba(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, values);
         }
     }
 
@@ -813,13 +697,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeOutlineColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgba(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, colors, startIndex, length);
         }
     }
 
@@ -828,13 +708,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param color The color.
     */
     public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgbaf(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(color);
         }
     }
 
@@ -846,13 +722,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param alpha The alpha component in the range 0 to 1.0.
     */
     public final void writeOutlineColorPropertyRgbaf(float red, float green, float blue, float alpha) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgbaf(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(red, green, blue, alpha);
         }
     }
 
@@ -862,13 +734,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeOutlineColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgbaf(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, values);
         }
     }
 
@@ -880,13 +748,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeOutlineColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeRgbaf(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, colors, startIndex, length);
         }
     }
 
@@ -895,13 +759,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(Reference value) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -910,13 +770,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -926,13 +782,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeOutlineColorPropertyReference(String identifier, String propertyName) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -942,13 +794,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
-        {
-            ColorCesiumWriter writer = openOutlineColorProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOutlineColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -974,13 +822,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writeOutlineWidthProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -990,13 +834,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeOutlineWidthProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -1008,13 +848,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeOutlineWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -1023,13 +859,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -1038,13 +870,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -1054,13 +882,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeOutlineWidthPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -1070,13 +894,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openOutlineWidthProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOutlineWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -1102,13 +922,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The value.
     */
     public final void writeNumberOfRingsProperty(int value) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -1118,13 +934,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeNumberOfRingsProperty(List<JulianDate> dates, List<Integer> values) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -1136,13 +948,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeNumberOfRingsProperty(List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -1151,13 +959,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeNumberOfRingsPropertyReference(Reference value) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -1166,13 +970,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param value The reference.
     */
     public final void writeNumberOfRingsPropertyReference(String value) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -1182,13 +982,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeNumberOfRingsPropertyReference(String identifier, String propertyName) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -1198,13 +994,9 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeNumberOfRingsPropertyReference(String identifier, String[] propertyNames) {
-        {
-            IntegerCesiumWriter writer = openNumberOfRingsProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<IntegerCesiumWriter> using$0 = new Using<IntegerCesiumWriter>(openNumberOfRingsProperty())) {
+            final IntegerCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 }

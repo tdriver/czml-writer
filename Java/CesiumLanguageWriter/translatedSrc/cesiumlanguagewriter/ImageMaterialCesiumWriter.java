@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
@@ -19,45 +19,53 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ImageMaterial} to a {@link CesiumOutputStream}. A {@code ImageMaterial} is a material that fills the surface with an image.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMaterialCesiumWriter> {
     /**
     * The name of the {@code image} property.
     */
+    @Nonnull
     public static final String ImagePropertyName = "image";
     /**
     * The name of the {@code repeat} property.
     */
+    @Nonnull
     public static final String RepeatPropertyName = "repeat";
     /**
     * The name of the {@code color} property.
     */
+    @Nonnull
     public static final String ColorPropertyName = "color";
     /**
     * The name of the {@code transparent} property.
     */
+    @Nonnull
     public static final String TransparentPropertyName = "transparent";
-    private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
-        public cesiumlanguagewriter.UriCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(new Func1<UriCesiumWriter>() {
+        public UriCesiumWriter invoke() {
             return new UriCesiumWriter(ImagePropertyName);
         }
     }, false);
-    private Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
-        public cesiumlanguagewriter.RepeatCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(new Func1<RepeatCesiumWriter>() {
+        public RepeatCesiumWriter invoke() {
             return new RepeatCesiumWriter(RepeatPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
-        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
+        public ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ColorPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_transparent = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_transparent = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(TransparentPropertyName);
         }
     }, false);
@@ -109,13 +117,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param resource A resource object describing external data.
     */
     public final void writeImageProperty(CesiumResource resource) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(resource);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(resource);
         }
     }
 
@@ -125,13 +129,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
     public final void writeImageProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(uri, resourceBehavior);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resourceBehavior);
         }
     }
 
@@ -141,13 +141,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
     public final void writeImageProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(uri, resourceBehavior);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resourceBehavior);
         }
     }
 
@@ -157,13 +153,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
     public final void writeImageProperty(URI uri, ICesiumUriResolver resolver) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(uri, resolver);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resolver);
         }
     }
 
@@ -173,13 +165,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
     public final void writeImageProperty(String uri, ICesiumUriResolver resolver) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(uri, resolver);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resolver);
         }
     }
 
@@ -188,13 +176,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param image The image. A data URI will be created for this image, using PNG encoding.
     */
     public final void writeImageProperty(RenderedImage image) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(image);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(image);
         }
     }
 
@@ -204,13 +188,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
     public final void writeImageProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeUri(image, imageFormat);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(image, imageFormat);
         }
     }
 
@@ -219,13 +199,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeImagePropertyReference(Reference value) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -234,13 +210,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeImagePropertyReference(String value) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -250,13 +222,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyName The property on the referenced object.
     */
     public final void writeImagePropertyReference(String identifier, String propertyName) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -266,13 +234,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeImagePropertyReference(String identifier, String[] propertyNames) {
-        {
-            UriCesiumWriter writer = openImageProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openImageProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -298,13 +262,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The value.
     */
     public final void writeRepeatProperty(@Nonnull Rectangular value) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeCartesian2(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeCartesian2(value);
         }
     }
 
@@ -314,13 +274,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param y The Y component.
     */
     public final void writeRepeatProperty(double x, double y) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeCartesian2(x, y);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeCartesian2(x, y);
         }
     }
 
@@ -330,13 +286,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param values The values corresponding to each date.
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeCartesian2(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeCartesian2(dates, values);
         }
     }
 
@@ -348,13 +300,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param length The number of elements to write.
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeCartesian2(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeCartesian2(dates, values, startIndex, length);
         }
     }
 
@@ -363,13 +311,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(Reference value) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -378,13 +322,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -394,13 +334,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyName The property on the referenced object.
     */
     public final void writeRepeatPropertyReference(String identifier, String propertyName) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -410,13 +346,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeRepeatPropertyReference(String identifier, String[] propertyNames) {
-        {
-            RepeatCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RepeatCesiumWriter> using$0 = new Using<RepeatCesiumWriter>(openRepeatProperty())) {
+            final RepeatCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -442,13 +374,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param color The color.
     */
     public final void writeColorProperty(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgba(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(color);
         }
     }
 
@@ -460,13 +388,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param alpha The alpha component in the range 0 to 255.
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgba(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(red, green, blue, alpha);
         }
     }
 
@@ -476,13 +400,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param values The values corresponding to each date.
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgba(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, values);
         }
     }
 
@@ -494,13 +414,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param length The number of elements to write.
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgba(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, colors, startIndex, length);
         }
     }
 
@@ -509,13 +425,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param color The color.
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgbaf(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(color);
         }
     }
 
@@ -527,13 +439,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param alpha The alpha component in the range 0 to 1.0.
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgbaf(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(red, green, blue, alpha);
         }
     }
 
@@ -543,13 +451,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param values The values corresponding to each date.
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgbaf(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, values);
         }
     }
 
@@ -561,13 +465,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param length The number of elements to write.
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeRgbaf(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, colors, startIndex, length);
         }
     }
 
@@ -576,13 +476,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeColorPropertyReference(Reference value) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -591,13 +487,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -607,13 +499,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyName The property on the referenced object.
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -623,13 +511,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
-        {
-            ColorCesiumWriter writer = openColorProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -655,13 +539,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The value.
     */
     public final void writeTransparentProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openTransparentProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openTransparentProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -670,13 +550,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeTransparentPropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openTransparentProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openTransparentProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -685,13 +561,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param value The reference.
     */
     public final void writeTransparentPropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openTransparentProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openTransparentProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -701,13 +573,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyName The property on the referenced object.
     */
     public final void writeTransparentPropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openTransparentProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openTransparentProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -717,13 +585,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeTransparentPropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openTransparentProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openTransparentProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 }

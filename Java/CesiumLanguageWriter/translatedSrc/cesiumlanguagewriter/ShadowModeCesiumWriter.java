@@ -10,27 +10,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ShadowMode} to a {@link CesiumOutputStream}. A {@code ShadowMode} is whether or not an object casts or receives shadows from each light source when shadows are enabled.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumShadowModeValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumShadowModeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code shadowMode} property.
     */
+    @Nonnull
     public static final String ShadowModePropertyName = "shadowMode";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> m_asShadowMode;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> m_asShadowMode;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,19 +142,21 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
     * Returns a wrapper for this instance that implements {@link ICesiumShadowModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> asShadowMode() {
         return m_asShadowMode.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> createAsShadowMode() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createShadowMode") {
-                    public cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
-                        return createShadowMode();
-                    }
-                }, false);
+        return new Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(new Func1<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createShadowMode") {
+            public CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
+                return createShadowMode();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> createShadowMode() {
         return CesiumValuePropertyAdaptors.<ShadowModeCesiumWriter> createShadowMode(this);
     }
@@ -158,19 +165,21 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<ShadowModeCesiumWriter> createReference(this);
     }

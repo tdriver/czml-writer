@@ -2,12 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -16,39 +15,26 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCesiumWriter> {
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
-            try {
-                {
-                    TilesetCesiumWriter tileset = getPacket().openTilesetProperty();
-                    try {
-                        {
-                            TilesetCesiumWriter interval = tileset.openInterval();
-                            try {
-                                interval.writeShowProperty(expectedShow);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(tileset);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(getPacket().openTilesetProperty())) {
+                final TilesetCesiumWriter tileset = using$1.resource;
+                try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
+                    final TilesetCesiumWriter interval = using$2.resource;
+                    interval.writeShowProperty(expectedShow);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression_0);
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, TilesetCesiumWriter.ShowPropertyName, expectedShow);
         assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
@@ -56,61 +42,35 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
     @Test
     public final void testUriProperty() {
         final String expectedUri = "test.tileset";
-        {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
-            try {
-                {
-                    TilesetCesiumWriter tileset = getPacket().openTilesetProperty();
-                    try {
-                        {
-                            TilesetCesiumWriter interval = tileset.openInterval();
-                            try {
-                                interval.writeUriProperty(expectedUri, CesiumResourceBehavior.LINK_TO);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(tileset);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(getPacket().openTilesetProperty())) {
+                final TilesetCesiumWriter tileset = using$1.resource;
+                try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
+                    final TilesetCesiumWriter interval = using$2.resource;
+                    interval.writeUriProperty(expectedUri, CesiumResourceBehavior.LINK_TO);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression_1);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, TilesetCesiumWriter.UriPropertyName, expectedUri);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, TilesetCesiumWriter.UriPropertyName, expectedUri);
+        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testMaximumScreenSpaceErrorProperty() {
         final double expectedMaximumScreenSpaceError = 0.75;
-        {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
-            try {
-                {
-                    TilesetCesiumWriter tileset = getPacket().openTilesetProperty();
-                    try {
-                        {
-                            TilesetCesiumWriter interval = tileset.openInterval();
-                            try {
-                                interval.writeMaximumScreenSpaceErrorProperty(expectedMaximumScreenSpaceError);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(tileset);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(getPacket().openTilesetProperty())) {
+                final TilesetCesiumWriter tileset = using$1.resource;
+                try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
+                    final TilesetCesiumWriter interval = using$2.resource;
+                    interval.writeMaximumScreenSpaceErrorProperty(expectedMaximumScreenSpaceError);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression_2);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError);
+        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
 
     @Override

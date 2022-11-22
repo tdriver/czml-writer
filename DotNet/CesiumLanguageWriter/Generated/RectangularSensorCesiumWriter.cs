@@ -19,141 +19,246 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>xHalfAngle</c> property.
         /// </summary>
+        [NotNull]
         public const string XHalfAnglePropertyName = "xHalfAngle";
 
         /// <summary>
         /// The name of the <c>yHalfAngle</c> property.
         /// </summary>
+        [NotNull]
         public const string YHalfAnglePropertyName = "yHalfAngle";
 
         /// <summary>
         /// The name of the <c>radius</c> property.
         /// </summary>
+        [NotNull]
         public const string RadiusPropertyName = "radius";
 
         /// <summary>
         /// The name of the <c>showIntersection</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowIntersectionPropertyName = "showIntersection";
 
         /// <summary>
         /// The name of the <c>intersectionColor</c> property.
         /// </summary>
+        [NotNull]
         public const string IntersectionColorPropertyName = "intersectionColor";
 
         /// <summary>
         /// The name of the <c>intersectionWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string IntersectionWidthPropertyName = "intersectionWidth";
 
         /// <summary>
         /// The name of the <c>showLateralSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowLateralSurfacesPropertyName = "showLateralSurfaces";
 
         /// <summary>
         /// The name of the <c>lateralSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>showEllipsoidSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
 
         /// <summary>
         /// The name of the <c>ellipsoidSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>showEllipsoidHorizonSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
 
         /// <summary>
         /// The name of the <c>ellipsoidHorizonSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>showDomeSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowDomeSurfacesPropertyName = "showDomeSurfaces";
 
         /// <summary>
         /// The name of the <c>domeSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>portionToDisplay</c> property.
         /// </summary>
+        [NotNull]
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         /// <summary>
         /// The name of the <c>environmentConstraint</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentConstraintPropertyName = "environmentConstraint";
 
         /// <summary>
         /// The name of the <c>showEnvironmentOcclusion</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
 
         /// <summary>
         /// The name of the <c>environmentOcclusionMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
 
         /// <summary>
         /// The name of the <c>showEnvironmentIntersection</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
 
         /// <summary>
         /// The name of the <c>environmentIntersectionColor</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
 
         /// <summary>
         /// The name of the <c>environmentIntersectionWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
 
         /// <summary>
         /// The name of the <c>showThroughEllipsoid</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowThroughEllipsoidPropertyName = "showThroughEllipsoid";
 
+        /// <summary>
+        /// The name of the <c>showViewshed</c> property.
+        /// </summary>
+        [NotNull]
+        public const string ShowViewshedPropertyName = "showViewshed";
+
+        /// <summary>
+        /// The name of the <c>viewshedVisibleColor</c> property.
+        /// </summary>
+        [NotNull]
+        public const string ViewshedVisibleColorPropertyName = "viewshedVisibleColor";
+
+        /// <summary>
+        /// The name of the <c>viewshedOccludedColor</c> property.
+        /// </summary>
+        [NotNull]
+        public const string ViewshedOccludedColorPropertyName = "viewshedOccludedColor";
+
+        /// <summary>
+        /// The name of the <c>viewshedResolution</c> property.
+        /// </summary>
+        [NotNull]
+        public const string ViewshedResolutionPropertyName = "viewshedResolution";
+
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_xHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(XHalfAnglePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_yHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(YHalfAnglePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_intersectionWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(IntersectionWidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showLateralSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowLateralSurfacesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_lateralSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(LateralSurfaceMaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showEllipsoidSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEllipsoidSurfacesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_ellipsoidSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(EllipsoidSurfaceMaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showEllipsoidHorizonSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEllipsoidHorizonSurfacesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_ellipsoidHorizonSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(EllipsoidHorizonSurfaceMaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showDomeSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowDomeSurfacesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_domeSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(DomeSurfaceMaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<SensorVolumePortionToDisplayCesiumWriter> m_portionToDisplay = new Lazy<SensorVolumePortionToDisplayCesiumWriter>(() => new SensorVolumePortionToDisplayCesiumWriter(PortionToDisplayPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_environmentConstraint = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(EnvironmentConstraintPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showEnvironmentOcclusion = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEnvironmentOcclusionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_environmentOcclusionMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(EnvironmentOcclusionMaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showEnvironmentIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEnvironmentIntersectionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_environmentIntersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(EnvironmentIntersectionColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(EnvironmentIntersectionWidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showThroughEllipsoid = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowThroughEllipsoidPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<BooleanCesiumWriter> m_showViewshed = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowViewshedPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<ColorCesiumWriter> m_viewshedVisibleColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ViewshedVisibleColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<ColorCesiumWriter> m_viewshedOccludedColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ViewshedOccludedColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<IntegerCesiumWriter> m_viewshedResolution = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ViewshedResolutionPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -1438,7 +1543,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>environmentConstraint</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>environmentConstraint</c> property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <c>environmentConstraint</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>environmentConstraint</c> property defines whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter EnvironmentConstraintWriter
@@ -1447,7 +1552,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>environmentConstraint</c> property. The <c>environmentConstraint</c> property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <c>environmentConstraint</c> property. The <c>environmentConstraint</c> property defines whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenEnvironmentConstraintProperty()
@@ -1457,7 +1562,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>environmentConstraint</c> property as a <c>boolean</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>boolean</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteEnvironmentConstraintProperty(bool value)
@@ -1469,7 +1574,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentConstraintPropertyReference(Reference value)
@@ -1481,7 +1586,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentConstraintPropertyReference(string value)
@@ -1493,7 +1598,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1506,7 +1611,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -2063,6 +2168,554 @@ namespace CesiumLanguageWriter
         public void WriteShowThroughEllipsoidPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenShowThroughEllipsoidProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>showViewshed</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>showViewshed</c> property defines whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        [NotNull]
+        public BooleanCesiumWriter ShowViewshedWriter
+        {
+            get { return m_showViewshed.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>showViewshed</c> property. The <c>showViewshed</c> property defines whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        [NotNull]
+        public BooleanCesiumWriter OpenShowViewshedProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowViewshedWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showViewshed</c> property as a <c>boolean</c> value. The <c>showViewshed</c> property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowViewshedProperty(bool value)
+        {
+            using (var writer = OpenShowViewshedProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showViewshed</c> property as a <c>reference</c> value. The <c>showViewshed</c> property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowViewshedPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowViewshedProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showViewshed</c> property as a <c>reference</c> value. The <c>showViewshed</c> property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowViewshedPropertyReference(string value)
+        {
+            using (var writer = OpenShowViewshedProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showViewshed</c> property as a <c>reference</c> value. The <c>showViewshed</c> property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowViewshedPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowViewshedProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showViewshed</c> property as a <c>reference</c> value. The <c>showViewshed</c> property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowViewshedPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowViewshedProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>viewshedVisibleColor</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>viewshedVisibleColor</c> property defines the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        [NotNull]
+        public ColorCesiumWriter ViewshedVisibleColorWriter
+        {
+            get { return m_viewshedVisibleColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>viewshedVisibleColor</c> property. The <c>viewshedVisibleColor</c> property defines the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        [NotNull]
+        public ColorCesiumWriter OpenViewshedVisibleColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ViewshedVisibleColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgba</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteViewshedVisibleColorProperty(Color color)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgba</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteViewshedVisibleColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgba</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteViewshedVisibleColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgba</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteViewshedVisibleColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgbaf</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteViewshedVisibleColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgbaf(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgbaf</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteViewshedVisibleColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgbaf</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteViewshedVisibleColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>rgbaf</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteViewshedVisibleColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>reference</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewshedVisibleColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>reference</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewshedVisibleColorPropertyReference(string value)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>reference</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteViewshedVisibleColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedVisibleColor</c> property as a <c>reference</c> value. The <c>viewshedVisibleColor</c> property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteViewshedVisibleColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenViewshedVisibleColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>viewshedOccludedColor</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>viewshedOccludedColor</c> property defines the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        [NotNull]
+        public ColorCesiumWriter ViewshedOccludedColorWriter
+        {
+            get { return m_viewshedOccludedColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>viewshedOccludedColor</c> property. The <c>viewshedOccludedColor</c> property defines the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        [NotNull]
+        public ColorCesiumWriter OpenViewshedOccludedColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ViewshedOccludedColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgba</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteViewshedOccludedColorProperty(Color color)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgba</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteViewshedOccludedColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgba</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteViewshedOccludedColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgba</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteViewshedOccludedColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgbaf</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteViewshedOccludedColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgbaf(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgbaf</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteViewshedOccludedColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgbaf</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteViewshedOccludedColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>rgbaf</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteViewshedOccludedColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>reference</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewshedOccludedColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>reference</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewshedOccludedColorPropertyReference(string value)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>reference</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteViewshedOccludedColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedOccludedColor</c> property as a <c>reference</c> value. The <c>viewshedOccludedColor</c> property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteViewshedOccludedColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenViewshedOccludedColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>viewshedResolution</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>viewshedResolution</c> property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        [NotNull]
+        public IntegerCesiumWriter ViewshedResolutionWriter
+        {
+            get { return m_viewshedResolution.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>viewshedResolution</c> property. The <c>viewshedResolution</c> property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        [NotNull]
+        public IntegerCesiumWriter OpenViewshedResolutionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ViewshedResolutionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>number</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteViewshedResolutionProperty(int value)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>number</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteViewshedResolutionProperty(IList<JulianDate> dates, IList<int> values)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>number</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteViewshedResolutionProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>reference</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewshedResolutionPropertyReference(Reference value)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>reference</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewshedResolutionPropertyReference(string value)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>reference</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteViewshedResolutionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>viewshedResolution</c> property as a <c>reference</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteViewshedResolutionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenViewshedResolutionProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

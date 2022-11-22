@@ -10,27 +10,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ColorBlendMode} to a {@link CesiumOutputStream}. A {@code ColorBlendMode} is the mode of blending between a target color and an entity's source color.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendModeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumColorBlendModeValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendModeCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumColorBlendModeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code colorBlendMode} property.
     */
+    @Nonnull
     public static final String ColorBlendModePropertyName = "colorBlendMode";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asColorBlendMode;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asColorBlendMode;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,19 +142,22 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     * Returns a wrapper for this instance that implements {@link ICesiumColorBlendModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> asColorBlendMode() {
         return m_asColorBlendMode.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> createAsColorBlendMode() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createColorBlendMode") {
-                    public cesiumlanguagewriter.advanced.CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
+        return new Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(
+                new Func1<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createColorBlendMode") {
+                    public CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
                         return createColorBlendMode();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> createColorBlendMode() {
         return CesiumValuePropertyAdaptors.<ColorBlendModeCesiumWriter> createColorBlendMode(this);
     }
@@ -158,19 +166,21 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<ColorBlendModeCesiumWriter> createReference(this);
     }

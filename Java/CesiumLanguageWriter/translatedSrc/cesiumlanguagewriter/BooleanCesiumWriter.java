@@ -10,26 +10,31 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Boolean} to a {@link CesiumOutputStream}. A {@code Boolean} is a boolean value.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code boolean} property.
     */
+    @Nonnull
     public static final String BooleanPropertyName = "boolean";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> m_asBoolean;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> m_asBoolean;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -136,19 +141,21 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     * Returns a wrapper for this instance that implements {@link ICesiumBooleanValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> asBoolean() {
         return m_asBoolean.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> createAsBoolean() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createBoolean") {
-                    public cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
-                        return createBoolean();
-                    }
-                }, false);
+        return new Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(new Func1<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createBoolean") {
+            public CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
+                return createBoolean();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> createBoolean() {
         return CesiumValuePropertyAdaptors.<BooleanCesiumWriter> createBoolean(this);
     }
@@ -157,19 +164,21 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<BooleanCesiumWriter> createReference(this);
     }

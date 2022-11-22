@@ -83,11 +83,7 @@ namespace GenerateFromSchema
 
                         using (writer.OpenScope())
                         {
-                            writer.WriteLine("#if CSToJava");
-                            writer.WriteLine("string dir = Environment.CurrentDirectory;");
-                            writer.WriteLine("#else");
                             writer.WriteLine("string dir = TestContext.CurrentContext.TestDirectory;");
-                            writer.WriteLine("#endif");
                             writer.WriteLine("using (m_streamWriter = File.CreateText(Path.Combine(dir, \"ValidationDocument.czml\")))");
                             writer.WriteLine("using (m_assertionsWriter = File.CreateText(Path.Combine(dir, \"ValidationDocumentAssertions.js\")))");
                             writer.WriteLine("using (m_extensionsAssertionsWriter = File.CreateText(Path.Combine(dir, \"ValidationDocumentExtensionAssertions.js\")))");
@@ -1461,6 +1457,19 @@ namespace GenerateFromSchema
                     value = $"new Rectangular({x}, {y})";
                     assertionValue = $"new Cartesian2({x}, {y})";
                     valueType = "Rectangular";
+                    return;
+                }
+                case "Cartesian2List":
+                {
+                    int x1 = GetNumber(0);
+                    int y1 = GetNumber(1);
+                    int x2 = GetNumber(2);
+                    int y2 = GetNumber(3);
+
+                    value = $"CreateList(new Rectangular({x1}, {y1}), new Rectangular({x2}, {y2}))";
+
+                    assertionValue = $"[ new Cartesian2({x1}, {y1}), new Cartesian2({x2}, {y2}) ]";
+                    valueType = "List<Rectangular>";
                     return;
                 }
                 case "Spherical":

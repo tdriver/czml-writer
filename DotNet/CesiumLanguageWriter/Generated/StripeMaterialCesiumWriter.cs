@@ -19,32 +19,47 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>orientation</c> property.
         /// </summary>
+        [NotNull]
         public const string OrientationPropertyName = "orientation";
 
         /// <summary>
         /// The name of the <c>evenColor</c> property.
         /// </summary>
+        [NotNull]
         public const string EvenColorPropertyName = "evenColor";
 
         /// <summary>
         /// The name of the <c>oddColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OddColorPropertyName = "oddColor";
 
         /// <summary>
         /// The name of the <c>offset</c> property.
         /// </summary>
+        [NotNull]
         public const string OffsetPropertyName = "offset";
 
         /// <summary>
         /// The name of the <c>repeat</c> property.
         /// </summary>
+        [NotNull]
         public const string RepeatPropertyName = "repeat";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<StripeOrientationCesiumWriter> m_orientation = new Lazy<StripeOrientationCesiumWriter>(() => new StripeOrientationCesiumWriter(OrientationPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_evenColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(EvenColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_oddColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OddColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_offset = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OffsetPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_repeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RepeatPropertyName), false);
 
         /// <summary>

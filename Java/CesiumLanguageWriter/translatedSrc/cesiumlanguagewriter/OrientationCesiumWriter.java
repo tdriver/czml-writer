@@ -11,32 +11,39 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Orientation} to a {@link CesiumOutputStream}. A {@code Orientation} is defines an orientation. An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<OrientationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
+public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter, ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
     /**
     * The name of the {@code unitQuaternion} property.
     */
+    @Nonnull
     public static final String UnitQuaternionPropertyName = "unitQuaternion";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code velocityReference} property.
     */
+    @Nonnull
     public static final String VelocityReferencePropertyName = "velocityReference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> m_asUnitQuaternion;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asReference;
-    private Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asVelocityReference;
+    @Nonnull
+    private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> m_asUnitQuaternion;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asVelocityReference;
 
     /**
     * Initializes a new instance.
@@ -209,19 +216,21 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     * Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> asUnitQuaternion() {
         return m_asUnitQuaternion.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> createAsUnitQuaternion() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createUnitQuaternion") {
-                    public cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                        return createUnitQuaternion();
-                    }
-                }, false);
+        return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createUnitQuaternion") {
+            public CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+                return createUnitQuaternion();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> createUnitQuaternion() {
         return CesiumValuePropertyAdaptors.<OrientationCesiumWriter> createUnitQuaternion(this);
     }
@@ -230,19 +239,21 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<OrientationCesiumWriter> createReference(this);
     }
@@ -251,19 +262,22 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     * Returns a wrapper for this instance that implements {@link ICesiumVelocityReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> asVelocityReference() {
         return m_asVelocityReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsVelocityReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createVelocityReference") {
-                    public cesiumlanguagewriter.advanced.CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+        return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
+                new Func1<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createVelocityReference") {
+                    public CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
                         return createVelocityReference();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> createVelocityReference() {
         return CesiumValuePropertyAdaptors.<OrientationCesiumWriter> createVelocityReference(this);
     }

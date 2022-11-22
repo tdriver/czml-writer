@@ -19,20 +19,29 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
 
         /// <summary>

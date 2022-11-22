@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
 /**
  * Contains helper methods for writing CZML values.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class CesiumWritingHelper {
     private CesiumWritingHelper() {}
@@ -23,10 +23,11 @@ public final class CesiumWritingHelper {
     /**
     * The maximum interval of time that can be specified.
     */
+    @Nonnull
     public static final TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.toJulianDate(), GregorianDate.MaxValue.toJulianDate());
 
     @Nonnull
-    private static Iso8601Format getIso8601Format(CesiumOutputStream output) {
+    private static Iso8601Format getIso8601Format(@Nonnull CesiumOutputStream output) {
         return output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT;
     }
 
@@ -35,7 +36,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param date The date to write.
     */
-    public static void writeDate(CesiumOutputStream output, @Nonnull JulianDate date) {
+    public static void writeDate(@Nonnull CesiumOutputStream output, @Nonnull JulianDate date) {
         output.writeValue(CesiumFormattingHelper.toIso8601(date, getIso8601Format(output)));
     }
 
@@ -44,7 +45,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param interval The interval to write.
     */
-    public static void writeTimeInterval(CesiumOutputStream output, TimeInterval interval) {
+    public static void writeTimeInterval(@Nonnull CesiumOutputStream output, @Nonnull TimeInterval interval) {
         output.writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getIso8601Format(output)));
     }
 
@@ -55,7 +56,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param intervals The intervals to write.
     */
-    public static void writeTimeIntervalCollection(CesiumOutputStream output, List<TimeInterval> intervals) {
+    public static void writeTimeIntervalCollection(@Nonnull CesiumOutputStream output, @Nonnull List<TimeInterval> intervals) {
         if (intervals.size() == 1) {
             TimeInterval interval = intervals.get(0);
             writeTimeInterval(output, interval);
@@ -74,7 +75,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeCartesian2(CesiumOutputStream output, @Nonnull Rectangular value) {
+    public static void writeCartesian2(@Nonnull CesiumOutputStream output, @Nonnull Rectangular value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -92,7 +93,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeCartesian2(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+    public static void writeCartesian2(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Rectangular> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -115,7 +117,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeCartographicExtent(CesiumOutputStream output, CartographicExtent value) {
+    public static void writeCartographicExtent(@Nonnull CesiumOutputStream output, @Nonnull CartographicExtent value) {
         output.writeStartSequence();
         output.writeValue(value.getWestLongitude());
         output.writeValue(value.getSouthLatitude());
@@ -135,7 +137,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeCartographicExtent(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+    public static void writeCartographicExtent(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<CartographicExtent> values,
+            int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -160,7 +163,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeCartesian3(CesiumOutputStream output, @Nonnull Cartesian value) {
+    public static void writeCartesian3(@Nonnull CesiumOutputStream output, @Nonnull Cartesian value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -179,7 +182,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeCartesian3(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+    public static void writeCartesian3(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Cartesian> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -203,7 +206,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeCartesian3Velocity(CesiumOutputStream output, @Nonnull Motion1<Cartesian> value) {
+    public static void writeCartesian3Velocity(@Nonnull CesiumOutputStream output, @Nonnull Motion1<Cartesian> value) {
         output.writeStartSequence();
         output.writeValue(value.getValue().getX());
         output.writeValue(value.getValue().getY());
@@ -225,7 +228,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeCartesian3Velocity(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Motion1<Cartesian>> values, int startIndex, int length) {
+    public static void writeCartesian3Velocity(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Motion1<Cartesian>> values,
+            int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -253,7 +257,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeUnitCartesian3(CesiumOutputStream output, @Nonnull UnitCartesian value) {
+    public static void writeUnitCartesian3(@Nonnull CesiumOutputStream output, @Nonnull UnitCartesian value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -272,7 +276,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeUnitCartesian3(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+    public static void writeUnitCartesian3(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<UnitCartesian> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -296,7 +301,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeSpherical(CesiumOutputStream output, @Nonnull Spherical value) {
+    public static void writeSpherical(@Nonnull CesiumOutputStream output, @Nonnull Spherical value) {
         output.writeStartSequence();
         output.writeValue(value.getClock());
         output.writeValue(value.getCone());
@@ -315,7 +320,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeSpherical(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+    public static void writeSpherical(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Spherical> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -339,7 +344,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeBoundingRectangle(CesiumOutputStream output, @Nonnull BoundingRectangle value) {
+    public static void writeBoundingRectangle(@Nonnull CesiumOutputStream output, @Nonnull BoundingRectangle value) {
         output.writeStartSequence();
         output.writeValue(value.getLeft());
         output.writeValue(value.getBottom());
@@ -359,7 +364,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeBoundingRectangle(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
+    public static void writeBoundingRectangle(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<BoundingRectangle> values,
+            int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -384,7 +390,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeNearFarScalar(CesiumOutputStream output, @Nonnull NearFarScalar value) {
+    public static void writeNearFarScalar(@Nonnull CesiumOutputStream output, @Nonnull NearFarScalar value) {
         output.writeStartSequence();
         output.writeValue(value.getNearDistance());
         output.writeValue(value.getNearValue());
@@ -404,7 +410,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeNearFarScalar(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+    public static void writeNearFarScalar(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<NearFarScalar> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -429,7 +436,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeBounds(CesiumOutputStream output, @Nonnull Bounds value) {
+    public static void writeBounds(@Nonnull CesiumOutputStream output, @Nonnull Bounds value) {
         output.writeStartSequence();
         output.writeValue(value.getLowerBound());
         output.writeValue(value.getUpperBound());
@@ -447,7 +454,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeBounds(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
+    public static void writeBounds(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Bounds> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -470,7 +477,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeUnitSpherical(CesiumOutputStream output, @Nonnull UnitSpherical value) {
+    public static void writeUnitSpherical(@Nonnull CesiumOutputStream output, @Nonnull UnitSpherical value) {
         output.writeStartSequence();
         output.writeValue(value.getClock());
         output.writeValue(value.getCone());
@@ -488,7 +495,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeUnitSpherical(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
+    public static void writeUnitSpherical(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<UnitSpherical> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -511,10 +519,25 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeDoubleList(CesiumOutputStream output, Iterable<Double> values) {
+    public static void writeDoubleList(@Nonnull CesiumOutputStream output, @Nonnull Iterable<Double> values) {
         output.writeStartSequence();
         for (final double value : values) {
             output.writeValue(value);
+            output.writeLineBreak();
+        }
+        output.writeEndSequence();
+    }
+
+    /**
+    * Writes a list of {@link Rectangular} values as an array in X, Y order.
+    * @param output The stream to which the value will be written.
+    * @param values The values to write.
+    */
+    public static void writeCartesian2List(@Nonnull CesiumOutputStream output, @Nonnull Iterable<Rectangular> values) {
+        output.writeStartSequence();
+        for (final Rectangular value : values) {
+            output.writeValue(value.getX());
+            output.writeValue(value.getY());
             output.writeLineBreak();
         }
         output.writeEndSequence();
@@ -525,7 +548,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeCartesian3List(CesiumOutputStream output, Iterable<Cartesian> values) {
+    public static void writeCartesian3List(@Nonnull CesiumOutputStream output, @Nonnull Iterable<Cartesian> values) {
         output.writeStartSequence();
         for (final Cartesian value : values) {
             output.writeValue(value.getX());
@@ -541,7 +564,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeCartesian3ListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<Cartesian>> values) {
+    public static void writeCartesian3ListOfLists(@Nonnull CesiumOutputStream output, @Nonnull Iterable<? extends Iterable<Cartesian>> values) {
         output.writeStartSequence();
         for (final Iterable<Cartesian> list : values) {
             output.writeStartSequence();
@@ -562,7 +585,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeCartographic(CesiumOutputStream output, @Nonnull Cartographic value) {
+    public static void writeCartographic(@Nonnull CesiumOutputStream output, @Nonnull Cartographic value) {
         output.writeStartSequence();
         output.writeValue(value.getLongitude());
         output.writeValue(value.getLatitude());
@@ -581,7 +604,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeCartographic(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
+    public static void writeCartographic(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Cartographic> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -605,7 +629,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeCartographicList(CesiumOutputStream output, Iterable<Cartographic> values) {
+    public static void writeCartographicList(@Nonnull CesiumOutputStream output, @Nonnull Iterable<Cartographic> values) {
         output.writeStartSequence();
         for (final Cartographic value : values) {
             output.writeValue(value.getLongitude());
@@ -621,7 +645,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeCartographicListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<Cartographic>> values) {
+    public static void writeCartographicListOfLists(@Nonnull CesiumOutputStream output, @Nonnull Iterable<? extends Iterable<Cartographic>> values) {
         output.writeStartSequence();
         for (final Iterable<Cartographic> list : values) {
             output.writeStartSequence();
@@ -642,7 +666,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the color.
     * @param value The value to write.
     */
-    public static void writeRgba(CesiumOutputStream output, @Nonnull Color value) {
+    public static void writeRgba(@Nonnull CesiumOutputStream output, @Nonnull Color value) {
         writeRgba(output, value.getRed(), value.getGreen(), value.getBlue(), value.getAlpha());
     }
 
@@ -654,7 +678,7 @@ public final class CesiumWritingHelper {
     * @param blue The blue component in the range 0-255.
     * @param alpha The alpha component in the range 0-255.
     */
-    public static void writeRgba(CesiumOutputStream output, int red, int green, int blue, int alpha) {
+    public static void writeRgba(@Nonnull CesiumOutputStream output, int red, int green, int blue, int alpha) {
         output.writeStartSequence();
         output.writeValue(red);
         output.writeValue(green);
@@ -674,7 +698,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeRgba(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
+    public static void writeRgba(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Color> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -699,7 +723,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the color.
     * @param value The value to write.
     */
-    public static void writeRgbaf(CesiumOutputStream output, @Nonnull Color value) {
+    public static void writeRgbaf(@Nonnull CesiumOutputStream output, @Nonnull Color value) {
         writeRgbaf(output, value.getRed() / 255.0, value.getGreen() / 255.0, value.getBlue() / 255.0, value.getAlpha() / 255.0);
     }
 
@@ -711,7 +735,7 @@ public final class CesiumWritingHelper {
     * @param blue The blue component in the range 0.0-1.0.
     * @param alpha The alpha component in the range 0.0-1.0.
     */
-    public static void writeRgbaf(CesiumOutputStream output, double red, double green, double blue, double alpha) {
+    public static void writeRgbaf(@Nonnull CesiumOutputStream output, double red, double green, double blue, double alpha) {
         output.writeStartSequence();
         output.writeValue(red);
         output.writeValue(green);
@@ -731,7 +755,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeRgbaf(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
+    public static void writeRgbaf(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Color> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -762,7 +786,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeDouble(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+    public static void writeDouble(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Double> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -789,7 +813,7 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeInteger(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
+    public static void writeInteger(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Integer> values, int startIndex, int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -810,7 +834,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeUnitQuaternion(CesiumOutputStream output, @Nonnull UnitQuaternion value) {
+    public static void writeUnitQuaternion(@Nonnull CesiumOutputStream output, @Nonnull UnitQuaternion value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -831,7 +855,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeUnitQuaternion(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
+    public static void writeUnitQuaternion(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<UnitQuaternion> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }
@@ -865,7 +890,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
-    public static void writeReference(CesiumOutputStream output, Reference value) {
+    public static void writeReference(@Nonnull CesiumOutputStream output, @Nonnull Reference value) {
         writeReference(output, value.getValue());
     }
 
@@ -875,7 +900,7 @@ public final class CesiumWritingHelper {
     * @param identifier The identifier of the referenced object.
     * @param propertyName The property name.
     */
-    public static void writeReference(CesiumOutputStream output, String identifier, String propertyName) {
+    public static void writeReference(@Nonnull CesiumOutputStream output, String identifier, String propertyName) {
         writeReference(output, new Reference(identifier, propertyName));
     }
 
@@ -885,7 +910,7 @@ public final class CesiumWritingHelper {
     * @param identifier The identifier of the referenced object.
     * @param propertyNames The hierarchy of property names, where each name is a subproperty of the previous item.
     */
-    public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
+    public static void writeReference(@Nonnull CesiumOutputStream output, String identifier, String[] propertyNames) {
         writeReference(output, new Reference(identifier, ArrayHelper.arrayAsList(propertyNames)));
     }
 
@@ -894,7 +919,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param references The list of values.
     */
-    public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
+    public static void writeReferences(@Nonnull CesiumOutputStream output, @Nonnull Iterable<Reference> references) {
         output.writeStartSequence();
         for (final Reference reference : references) {
             output.writeValue(reference.getValue());
@@ -908,7 +933,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The list of lists of values.
     */
-    public static void writeReferenceListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<? extends Reference>> values) {
+    public static void writeReferenceListOfLists(@Nonnull CesiumOutputStream output, @Nonnull Iterable<? extends Iterable<? extends Reference>> values) {
         output.writeStartSequence();
         for (final Iterable<? extends Reference> list : values) {
             output.writeStartSequence();
@@ -927,7 +952,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeUnitCartesian3List(CesiumOutputStream output, Iterable<UnitCartesian> values) {
+    public static void writeUnitCartesian3List(@Nonnull CesiumOutputStream output, @Nonnull Iterable<UnitCartesian> values) {
         output.writeStartSequence();
         for (final UnitCartesian value : values) {
             output.writeValue(value.getX());
@@ -943,7 +968,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeSphericalList(CesiumOutputStream output, Iterable<Spherical> values) {
+    public static void writeSphericalList(@Nonnull CesiumOutputStream output, @Nonnull Iterable<Spherical> values) {
         output.writeStartSequence();
         for (final Spherical value : values) {
             output.writeValue(value.getClock());
@@ -959,7 +984,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
-    public static void writeUnitSphericalList(CesiumOutputStream output, Iterable<UnitSpherical> values) {
+    public static void writeUnitSphericalList(@Nonnull CesiumOutputStream output, @Nonnull Iterable<UnitSpherical> values) {
         output.writeStartSequence();
         for (final UnitSpherical value : values) {
             output.writeValue(value.getClock());
@@ -981,7 +1006,7 @@ public final class CesiumWritingHelper {
     * @return A suitable epoch determined from the collection.
     */
     @Nonnull
-    private static JulianDate getAndWriteEpoch(CesiumOutputStream output, List<JulianDate> dates, int startIndex, int length) {
+    private static JulianDate getAndWriteEpoch(@Nonnull CesiumOutputStream output, @Nonnull List<JulianDate> dates, int startIndex, int length) {
         if (startIndex >= dates.size()) {
             return JulianDate.getMinValue();
         }

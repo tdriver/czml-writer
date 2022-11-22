@@ -2,8 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -17,10 +18,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPacketCesiumWriter {
@@ -39,20 +40,15 @@ public class TestPacketCesiumWriter {
     public final void opensObjectLiteralOnOpenAndClosesItOnClose() {
         PacketCesiumWriter packet = new PacketCesiumWriter();
         packet.open(m_outputStream);
-        Assert.assertEquals("{", m_stringWriter.toString());
+        AssertHelper.assertEquals("{", m_stringWriter.toString());
         packet.close();
-        Assert.assertEquals("{}", m_stringWriter.toString());
+        AssertHelper.assertEquals("{}", m_stringWriter.toString());
     }
 
     @Test
     public final void disposeClosesPacket() {
-        {
-            final PacketCesiumWriter usingExpression_0 = (m_writer.openPacket(m_outputStream));
-            try {} finally {
-                DisposeHelper.dispose(usingExpression_0);
-            }
-        }
-        Assert.assertEquals("{}", m_stringWriter.toString());
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {}
+        AssertHelper.assertEquals("{}", m_stringWriter.toString());
     }
 
     @Test
@@ -60,7 +56,7 @@ public class TestPacketCesiumWriter {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
         packet.writeId("foo");
         packet.close();
-        Assert.assertEquals("{\"id\":\"foo\"}", m_stringWriter.toString());
+        AssertHelper.assertEquals("{\"id\":\"foo\"}", m_stringWriter.toString());
     }
 
     @Test
@@ -69,7 +65,7 @@ public class TestPacketCesiumWriter {
         packet.writeId("foo");
         packet.writeDelete(true);
         packet.close();
-        Assert.assertEquals("{\"id\":\"foo\",\"delete\":true}", m_stringWriter.toString());
+        AssertHelper.assertEquals("{\"id\":\"foo\",\"delete\":true}", m_stringWriter.toString());
     }
 
     @Test
@@ -77,7 +73,7 @@ public class TestPacketCesiumWriter {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
         packet.writeDescriptionProperty("blah");
         packet.close();
-        Assert.assertEquals("{\"description\":\"blah\"}", m_stringWriter.toString());
+        AssertHelper.assertEquals("{\"description\":\"blah\"}", m_stringWriter.toString());
     }
 
     @Test
@@ -85,38 +81,26 @@ public class TestPacketCesiumWriter {
         JulianDate start = new GregorianDate(2012, 4, 2, 1, 2, 3D).toJulianDate();
         JulianDate stop = new GregorianDate(2012, 4, 3, 1, 2, 3D).toJulianDate();
         m_outputStream.writeStartSequence();
-        {
-            PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-            try {
-                packet.writeAvailability(start, stop);
-            } finally {
-                DisposeHelper.dispose(packet);
-            }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeAvailability(start, stop);
         }
-        {
-            PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-            try {
-                packet.writeAvailability(new TimeInterval(start, stop));
-            } finally {
-                DisposeHelper.dispose(packet);
-            }
+        try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {
+            final PacketCesiumWriter packet = using$1.resource;
+            packet.writeAvailability(new TimeInterval(start, stop));
         }
-        {
-            PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-            try {
-                final ArrayList<cesiumlanguagewriter.TimeInterval> tempCollection$0 = new ArrayList<cesiumlanguagewriter.TimeInterval>();
-                tempCollection$0.add(new TimeInterval(start, stop));
-                tempCollection$0.add(new TimeInterval(start.addDays(2.0), stop.addDays(2.0)));
-                ArrayList<cesiumlanguagewriter.TimeInterval> intervals = tempCollection$0;
-                packet.writeAvailability(intervals);
-            } finally {
-                DisposeHelper.dispose(packet);
-            }
+        try (Using<PacketCesiumWriter> using$2 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {
+            final PacketCesiumWriter packet = using$2.resource;
+            final ArrayList<TimeInterval> tempCollection$0 = new ArrayList<TimeInterval>();
+            tempCollection$0.add(new TimeInterval(start, stop));
+            tempCollection$0.add(new TimeInterval(start.addDays(2.0), stop.addDays(2.0)));
+            ArrayList<TimeInterval> intervals = tempCollection$0;
+            packet.writeAvailability(intervals);
         }
         m_outputStream.writeEndSequence();
         final String expected = "[" + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"},"
                 + "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}" + "]";
-        Assert.assertEquals(expected, m_stringWriter.toString());
+        AssertHelper.assertEquals(expected, m_stringWriter.toString());
     }
 
     @Test
@@ -124,21 +108,17 @@ public class TestPacketCesiumWriter {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
         PositionCesiumWriter position = packet.openPositionProperty();
         Assert.assertNotNull(position);
-        Assert.assertEquals("{\"position\":", m_stringWriter.toString());
+        AssertHelper.assertEquals("{\"position\":", m_stringWriter.toString());
     }
 
     @Test
     public final void testBillboardProperty() {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-        {
-            BillboardCesiumWriter billboard = packet.openBillboardProperty();
-            try {
-                Assert.assertNotNull(billboard);
-            } finally {
-                DisposeHelper.dispose(billboard);
-            }
+        try (Using<BillboardCesiumWriter> using$0 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+            final BillboardCesiumWriter billboard = using$0.resource;
+            Assert.assertNotNull(billboard);
         }
-        Assert.assertEquals("{\"billboard\":", m_stringWriter.toString());
+        AssertHelper.assertEquals("{\"billboard\":", m_stringWriter.toString());
     }
 
     @Nonnull

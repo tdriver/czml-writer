@@ -9,22 +9,25 @@ import javax.annotation.Nullable;
 /**
  * The height reference of an object, which indicates if the object's position is relative to terrain or not.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumHeightReference implements Enumeration {
     /**
     * The position is absolute.
     */
-    NONE(0), /**
-             * The position is clamped to the terrain.
-             */
-    CLAMP_TO_GROUND(1), /**
-                        * The position height is the height above the terrain.
-                        */
+    NONE(0),
+    /**
+    * The position is clamped to the terrain.
+    */
+    CLAMP_TO_GROUND(1),
+    /**
+    * The position height is the height above the terrain.
+    */
     RELATIVE_TO_GROUND(2);
+
     private final int value;
 
     CesiumHeightReference(int value) {

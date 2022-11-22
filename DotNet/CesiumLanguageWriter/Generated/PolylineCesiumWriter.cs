@@ -18,80 +18,119 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>positions</c> property.
         /// </summary>
+        [NotNull]
         public const string PositionsPropertyName = "positions";
 
         /// <summary>
         /// The name of the <c>arcType</c> property.
         /// </summary>
+        [NotNull]
         public const string ArcTypePropertyName = "arcType";
 
         /// <summary>
         /// The name of the <c>width</c> property.
         /// </summary>
+        [NotNull]
         public const string WidthPropertyName = "width";
 
         /// <summary>
         /// The name of the <c>granularity</c> property.
         /// </summary>
+        [NotNull]
         public const string GranularityPropertyName = "granularity";
 
         /// <summary>
         /// The name of the <c>material</c> property.
         /// </summary>
+        [NotNull]
         public const string MaterialPropertyName = "material";
 
         /// <summary>
         /// The name of the <c>followSurface</c> property.
         /// </summary>
+        [NotNull]
         public const string FollowSurfacePropertyName = "followSurface";
 
         /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
+        [NotNull]
         public const string ShadowsPropertyName = "shadows";
 
         /// <summary>
         /// The name of the <c>depthFailMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string DepthFailMaterialPropertyName = "depthFailMaterial";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>clampToGround</c> property.
         /// </summary>
+        [NotNull]
         public const string ClampToGroundPropertyName = "clampToGround";
 
         /// <summary>
         /// The name of the <c>classificationType</c> property.
         /// </summary>
+        [NotNull]
         public const string ClassificationTypePropertyName = "classificationType";
 
         /// <summary>
         /// The name of the <c>zIndex</c> property.
         /// </summary>
+        [NotNull]
         public const string ZIndexPropertyName = "zIndex";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<ArcTypeCesiumWriter>(() => new ArcTypeCesiumWriter(ArcTypePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GranularityPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FollowSurfacePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PolylineMaterialCesiumWriter> m_depthFailMaterial = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(DepthFailMaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ClampToGroundPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(() => new ClassificationTypeCesiumWriter(ClassificationTypePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ZIndexPropertyName), false);
 
         /// <summary>

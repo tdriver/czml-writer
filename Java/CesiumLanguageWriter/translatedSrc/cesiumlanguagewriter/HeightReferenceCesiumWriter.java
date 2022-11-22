@@ -10,27 +10,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code HeightReference} to a {@link CesiumOutputStream}. A {@code HeightReference} is the height reference of an object, which indicates if the object's position is relative to terrain or not.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumHeightReferenceValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumHeightReferenceValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code heightReference} property.
     */
+    @Nonnull
     public static final String HeightReferencePropertyName = "heightReference";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asHeightReference;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asHeightReference;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,19 +142,22 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     * Returns a wrapper for this instance that implements {@link ICesiumHeightReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> asHeightReference() {
         return m_asHeightReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> createAsHeightReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createHeightReference") {
-                    public cesiumlanguagewriter.advanced.CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
+        return new Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(
+                new Func1<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createHeightReference") {
+                    public CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
                         return createHeightReference();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> createHeightReference() {
         return CesiumValuePropertyAdaptors.<HeightReferenceCesiumWriter> createHeightReference(this);
     }
@@ -158,19 +166,21 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<HeightReferenceCesiumWriter> createReference(this);
     }

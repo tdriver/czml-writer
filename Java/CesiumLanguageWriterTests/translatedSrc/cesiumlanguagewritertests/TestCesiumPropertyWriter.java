@@ -6,11 +6,11 @@ import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
@@ -18,7 +18,6 @@ import java.awt.Color;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
@@ -29,10 +28,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> {
@@ -84,7 +83,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     */
     @Nonnull
     public static String createExpectedJson(@Nonnull String topLevelPropertyName, @Nonnull Map<String, Object> dictionary) {
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, topLevelPropertyName, dictionary);
         return createExpectedJson(tempCollection$0);
     }
@@ -122,71 +121,80 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         }
         if (value instanceof Color) {
             Color color = (Color) value;
-            final ArrayList<Object> tempCollection$2 = new ArrayList<Object>();
-            tempCollection$2.add(color.getRed());
-            tempCollection$2.add(color.getGreen());
-            tempCollection$2.add(color.getBlue());
-            tempCollection$2.add(color.getAlpha());
-            final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$1, "rgba", tempCollection$2);
-            return createExpectedJson(tempCollection$1);
+            final ArrayList<Object> tempCollection$1 = new ArrayList<Object>();
+            tempCollection$1.add(color.getRed());
+            tempCollection$1.add(color.getGreen());
+            tempCollection$1.add(color.getBlue());
+            tempCollection$1.add(color.getAlpha());
+            final Map<String, Object> tempCollection$0 = MapHelper.create();
+            MapHelper.add(tempCollection$0, "rgba", tempCollection$1);
+            return createExpectedJson(tempCollection$0);
+        }
+        if (value instanceof Bounds) {
+            Bounds bounds = (Bounds) value;
+            final ArrayList<Object> tempCollection$3 = new ArrayList<Object>();
+            tempCollection$3.add(bounds.getLowerBound());
+            tempCollection$3.add(bounds.getUpperBound());
+            final Map<String, Object> tempCollection$2 = MapHelper.create();
+            MapHelper.add(tempCollection$2, "distanceDisplayCondition", tempCollection$3);
+            return createExpectedJson(tempCollection$2);
         }
         if (value instanceof NearFarScalar) {
             NearFarScalar nearFarScalar = (NearFarScalar) value;
-            final ArrayList<Object> tempCollection$4 = new ArrayList<Object>();
-            tempCollection$4.add(nearFarScalar.getNearDistance());
-            tempCollection$4.add(nearFarScalar.getNearValue());
-            tempCollection$4.add(nearFarScalar.getFarDistance());
-            tempCollection$4.add(nearFarScalar.getFarValue());
-            final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$3, "nearFarScalar", tempCollection$4);
-            return createExpectedJson(tempCollection$3);
+            final ArrayList<Object> tempCollection$5 = new ArrayList<Object>();
+            tempCollection$5.add(nearFarScalar.getNearDistance());
+            tempCollection$5.add(nearFarScalar.getNearValue());
+            tempCollection$5.add(nearFarScalar.getFarDistance());
+            tempCollection$5.add(nearFarScalar.getFarValue());
+            final Map<String, Object> tempCollection$4 = MapHelper.create();
+            MapHelper.add(tempCollection$4, "nearFarScalar", tempCollection$5);
+            return createExpectedJson(tempCollection$4);
         }
         if (value instanceof Rectangular) {
             Rectangular rectangular = (Rectangular) value;
-            final ArrayList<Object> tempCollection$6 = new ArrayList<Object>();
-            tempCollection$6.add(rectangular.getX());
-            tempCollection$6.add(rectangular.getY());
-            final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$5, "cartesian2", tempCollection$6);
-            return createExpectedJson(tempCollection$5);
+            final ArrayList<Object> tempCollection$7 = new ArrayList<Object>();
+            tempCollection$7.add(rectangular.getX());
+            tempCollection$7.add(rectangular.getY());
+            final Map<String, Object> tempCollection$6 = MapHelper.create();
+            MapHelper.add(tempCollection$6, "cartesian2", tempCollection$7);
+            return createExpectedJson(tempCollection$6);
         }
         if (value instanceof Cartesian) {
             Cartesian cartesian = (Cartesian) value;
-            final ArrayList<Object> tempCollection$8 = new ArrayList<Object>();
-            tempCollection$8.add(cartesian.getX());
-            tempCollection$8.add(cartesian.getY());
-            tempCollection$8.add(cartesian.getZ());
-            final Map<String, Object> tempCollection$7 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$7, "cartesian", tempCollection$8);
-            return createExpectedJson(tempCollection$7);
+            final ArrayList<Object> tempCollection$9 = new ArrayList<Object>();
+            tempCollection$9.add(cartesian.getX());
+            tempCollection$9.add(cartesian.getY());
+            tempCollection$9.add(cartesian.getZ());
+            final Map<String, Object> tempCollection$8 = MapHelper.create();
+            MapHelper.add(tempCollection$8, "cartesian", tempCollection$9);
+            return createExpectedJson(tempCollection$8);
         }
         if (value instanceof Cartographic) {
             Cartographic cartographic = (Cartographic) value;
-            final ArrayList<Object> tempCollection$10 = new ArrayList<Object>();
-            tempCollection$10.add(cartographic.getLongitude());
-            tempCollection$10.add(cartographic.getLatitude());
-            tempCollection$10.add(cartographic.getHeight());
-            final Map<String, Object> tempCollection$9 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$9, "cartographicRadians", tempCollection$10);
-            return createExpectedJson(tempCollection$9);
+            final ArrayList<Object> tempCollection$11 = new ArrayList<Object>();
+            tempCollection$11.add(cartographic.getLongitude());
+            tempCollection$11.add(cartographic.getLatitude());
+            tempCollection$11.add(cartographic.getHeight());
+            final Map<String, Object> tempCollection$10 = MapHelper.create();
+            MapHelper.add(tempCollection$10, "cartographicRadians", tempCollection$11);
+            return createExpectedJson(tempCollection$10);
         }
         if (value instanceof UnitQuaternion) {
             UnitQuaternion unitQuaternion = (UnitQuaternion) value;
-            final ArrayList<Object> tempCollection$12 = new ArrayList<Object>();
-            tempCollection$12.add(unitQuaternion.getX());
-            tempCollection$12.add(unitQuaternion.getY());
-            tempCollection$12.add(unitQuaternion.getZ());
-            tempCollection$12.add(unitQuaternion.getW());
-            final Map<String, Object> tempCollection$11 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$11, "unitQuaternion", tempCollection$12);
-            return createExpectedJson(tempCollection$11);
+            final ArrayList<Object> tempCollection$13 = new ArrayList<Object>();
+            tempCollection$13.add(unitQuaternion.getX());
+            tempCollection$13.add(unitQuaternion.getY());
+            tempCollection$13.add(unitQuaternion.getZ());
+            tempCollection$13.add(unitQuaternion.getW());
+            final Map<String, Object> tempCollection$12 = MapHelper.create();
+            MapHelper.add(tempCollection$12, "unitQuaternion", tempCollection$13);
+            return createExpectedJson(tempCollection$12);
         }
-        Map<String, Object> dictionary = (value instanceof Map) ? (Map<String, Object>) value : null;
+        Map<String, Object> dictionary = value instanceof Map ? (Map<String, Object>) value : null;
         if (dictionary != null) {
             return createExpectedJson(dictionary);
         }
-        Iterable<Object> list = (value instanceof Iterable) ? (Iterable<Object>) value : null;
+        Iterable<Object> list = value instanceof Iterable ? (Iterable<Object>) value : null;
         if (list != null) {
             StringBuilder builder = new StringBuilder();
             builder.append('[');
@@ -202,22 +210,22 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     @CS2JWarning("Unhandled attribute removed: AssertionMethod")
     public final void assertExpectedJson(@Nonnull String topLevelPropertyName, @Nonnull Map<String, Object> dictionary) {
         String expectedJson = createExpectedJson(topLevelPropertyName, dictionary);
-        Assert.assertEquals(expectedJson, getStringWriter().toString());
+        AssertHelper.assertEquals(expectedJson, getStringWriter().toString());
     }
 
     @CS2JWarning("Unhandled attribute removed: AssertionMethod")
     public final void assertExpectedJson(@Nonnull Map<String, Object> dictionary) {
         String expectedJson = createExpectedJson(dictionary);
-        Assert.assertEquals(expectedJson, getStringWriter().toString());
+        AssertHelper.assertEquals(expectedJson, getStringWriter().toString());
     }
 
     @Test
     public final void writesPropertyNameOnOpenAndNothingOnClose() {
         CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("foobar");
         propertyWriter.open(getOutputStream());
-        Assert.assertEquals("{\"foobar\":", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"foobar\":", getStringWriter().toString());
         propertyWriter.close();
-        Assert.assertEquals("{\"foobar\":", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"foobar\":", getStringWriter().toString());
     }
 
     @Test
@@ -226,7 +234,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         propertyWriter.open(getOutputStream());
         TDerived intervalWriter = propertyWriter.openInterval();
         Assert.assertNotNull(intervalWriter);
-        Assert.assertEquals("{\"woot\":{", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"woot\":{", getStringWriter().toString());
     }
 
     @Test
@@ -235,7 +243,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         propertyWriter.open(getOutputStream());
         CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
         Assert.assertNotNull(intervalListWriter);
-        Assert.assertEquals("{\"woot\":[", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"woot\":[", getStringWriter().toString());
     }
 
     @Test
@@ -244,7 +252,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         propertyWriter.open(getOutputStream());
         CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
         intervalListWriter.close();
-        Assert.assertEquals("{\"woot\":[]", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"woot\":[]", getStringWriter().toString());
     }
 
     @Test
@@ -252,54 +260,33 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         final String expectedPropertyName = "woot";
         JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0D).toJulianDate();
-        {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
-                            try {
-                                {
-                                    TDerived intervalWriter = intervalListWriter.openInterval();
-                                    try {
-                                        intervalWriter.writeInterval(start, stop);
-                                    } finally {
-                                        DisposeHelper.dispose(intervalWriter);
-                                    }
-                                }
-                                {
-                                    TDerived intervalWriter = intervalListWriter.openInterval();
-                                    try {
-                                        intervalWriter.writeInterval(new TimeInterval(start, stop));
-                                    } finally {
-                                        DisposeHelper.dispose(intervalWriter);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(intervalListWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<CesiumIntervalListWriter<TDerived>> using$2 = new Using<CesiumIntervalListWriter<TDerived>>(propertyWriter.openMultipleIntervals())) {
+                    final CesiumIntervalListWriter<TDerived> intervalListWriter = using$2.resource;
+                    try (Using<TDerived> using$3 = new Using<TDerived>(intervalListWriter.openInterval())) {
+                        final TDerived intervalWriter = using$3.resource;
+                        intervalWriter.writeInterval(start, stop);
+                    }
+                    try (Using<TDerived> using$4 = new Using<TDerived>(intervalListWriter.openInterval())) {
+                        final TDerived intervalWriter = using$4.resource;
+                        intervalWriter.writeInterval(new TimeInterval(start, stop));
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression_0);
             }
         }
-        final Map<String, Object> tempCollection$15 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$15, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        final Map<String, Object> tempCollection$16 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$16, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        final ArrayList<Object> tempCollection$14 = new ArrayList<Object>();
-        tempCollection$14.add(tempCollection$15);
-        tempCollection$14.add(tempCollection$16);
-        final Map<String, Object> tempCollection$13 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$13, expectedPropertyName, tempCollection$14);
-        assertExpectedJson(tempCollection$13);
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        final Map<String, Object> tempCollection$3 = MapHelper.create();
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        final ArrayList<Object> tempCollection$1 = new ArrayList<Object>();
+        tempCollection$1.add(tempCollection$2);
+        tempCollection$1.add(tempCollection$3);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, expectedPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test

@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
 /**
  * Manages Leap Seconds.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class LeapSeconds {
     /**
@@ -27,7 +27,7 @@ public class LeapSeconds {
     when the library was released.
     */
     public LeapSeconds() {
-        final ArrayList<cesiumlanguagewriter.LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
+        final ArrayList<LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
         tempCollection$0.add(new LeapSecond(2441317.5, 10D));
         tempCollection$0.add(new LeapSecond(2441499.5, 11D));
         tempCollection$0.add(new LeapSecond(2441683.5, 12D));
@@ -135,9 +135,7 @@ public class LeapSeconds {
     public final JulianDate convertTaiToUtc(@Nonnull JulianDate date) {
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         JulianDate result = new JulianDate();
-        final JulianDate[] out$result$1 = {
-            null
-        };
+        final JulianDate[] out$result$1 = new JulianDate[1];
         final boolean temp$0 = tryConvertTaiToUtc(date, out$result$1);
         result = out$result$1[0];
         if (temp$0) {

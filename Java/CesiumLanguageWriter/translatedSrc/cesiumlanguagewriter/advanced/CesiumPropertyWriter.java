@@ -15,10 +15,10 @@ import javax.annotation.Nullable;
  single interval or over multiple intervals.
  * @param <TDerived> The type of the class derived from this one.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
     /**
@@ -46,8 +46,8 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     private CesiumPropertyWriter() {
-        m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter") {
-            public cesiumlanguagewriter.CesiumIntervalListWriter<TDerived> invoke() {
+        m_multipleIntervals = new Lazy<CesiumIntervalListWriter<TDerived>>(new Func1<CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter") {
+            public CesiumIntervalListWriter<TDerived> invoke() {
                 return createIntervalListWriter();
             }
         }, false);
@@ -215,7 +215,10 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     private ElementType m_elementType = ElementType.PROPERTY;
 
     private static enum ElementType implements Enumeration {
-        PROPERTY(0), INTERVAL(1), PROPERTY_CONVERTED_TO_INTERVAL(2);
+        PROPERTY(0),
+        INTERVAL(1),
+        PROPERTY_CONVERTED_TO_INTERVAL(2);
+
         private final int value;
 
         ElementType(int value) {

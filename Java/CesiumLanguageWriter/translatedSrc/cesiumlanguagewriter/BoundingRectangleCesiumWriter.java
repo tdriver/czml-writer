@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code BoundingRectangle} to a {@link CesiumOutputStream}. A {@code BoundingRectangle} is a bounding rectangle specified by a corner, width and height.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter> implements ICesiumDeletablePropertyWriter,
-        ICesiumBoundingRectangleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumBoundingRectangleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code boundingRectangle} property.
     */
+    @Nonnull
     public static final String BoundingRectanglePropertyName = "boundingRectangle";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> m_asBoundingRectangle;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> m_asBoundingRectangle;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -156,19 +161,22 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
     * Returns a wrapper for this instance that implements {@link ICesiumBoundingRectangleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> asBoundingRectangle() {
         return m_asBoundingRectangle.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsBoundingRectangle() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createBoundingRectangle") {
-                    public cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
+        return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
+                new Func1<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createBoundingRectangle") {
+                    public CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
                         return createBoundingRectangle();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> createBoundingRectangle() {
         return CesiumValuePropertyAdaptors.<BoundingRectangleCesiumWriter> createBoundingRectangle(this);
     }
@@ -177,19 +185,21 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<BoundingRectangleCesiumWriter> createReference(this);
     }

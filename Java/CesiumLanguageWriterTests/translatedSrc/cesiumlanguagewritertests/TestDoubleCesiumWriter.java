@@ -2,12 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -16,10 +15,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiumWriter> {
@@ -27,23 +26,14 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
     public final void doubleCanBeWrittenAsSimpleNumber() {
         final String expectedPropertyName = "foo";
         final double expectedValue = 1.23;
-        {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
-            try {
-                {
-                    DoubleCesiumWriter writer = new DoubleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeNumber(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression_0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
+                final DoubleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeNumber(expectedValue);
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedPropertyName, expectedValue);
         assertExpectedJson(tempCollection$0);
     }
@@ -54,27 +44,18 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final double expectedValue = 1.23;
-        {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
-            try {
-                {
-                    DoubleCesiumWriter writer = new DoubleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeNumber(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression_1);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
+                final DoubleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeNumber(expectedValue);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$1, DoubleCesiumWriter.NumberPropertyName, expectedValue);
-        assertExpectedJson(expectedPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$0, DoubleCesiumWriter.NumberPropertyName, expectedValue);
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
@@ -84,31 +65,22 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
         final String expectedId = "id";
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
-        {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
-            try {
-                getPacket().writeId(expectedId);
-                {
-                    DoubleCesiumWriter writer = new DoubleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeDelete(expectedDelete);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression_2);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            getPacket().writeId(expectedId);
+            try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
+                final DoubleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeDelete(expectedDelete);
             }
         }
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, DoubleCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$2, expectedPropertyName, tempCollection$3);
-        assertExpectedJson(tempCollection$2);
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, DoubleCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, expectedPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
@@ -116,29 +88,20 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
         final String expectedId = "id";
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
-        {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
-            try {
-                getPacket().writeId(expectedId);
-                {
-                    DoubleCesiumWriter writer = new DoubleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeDelete(expectedDelete);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression_3);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            getPacket().writeId(expectedId);
+            try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
+                final DoubleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeDelete(expectedDelete);
             }
         }
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, DoubleCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$4, expectedPropertyName, tempCollection$5);
-        assertExpectedJson(tempCollection$4);
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, DoubleCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, expectedPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Override

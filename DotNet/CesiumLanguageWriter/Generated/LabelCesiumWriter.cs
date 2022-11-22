@@ -19,128 +19,191 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>text</c> property.
         /// </summary>
+        [NotNull]
         public const string TextPropertyName = "text";
 
         /// <summary>
         /// The name of the <c>font</c> property.
         /// </summary>
+        [NotNull]
         public const string FontPropertyName = "font";
 
         /// <summary>
         /// The name of the <c>style</c> property.
         /// </summary>
+        [NotNull]
         public const string StylePropertyName = "style";
 
         /// <summary>
         /// The name of the <c>scale</c> property.
         /// </summary>
+        [NotNull]
         public const string ScalePropertyName = "scale";
 
         /// <summary>
         /// The name of the <c>showBackground</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowBackgroundPropertyName = "showBackground";
 
         /// <summary>
         /// The name of the <c>backgroundColor</c> property.
         /// </summary>
+        [NotNull]
         public const string BackgroundColorPropertyName = "backgroundColor";
 
         /// <summary>
         /// The name of the <c>backgroundPadding</c> property.
         /// </summary>
+        [NotNull]
         public const string BackgroundPaddingPropertyName = "backgroundPadding";
 
         /// <summary>
         /// The name of the <c>pixelOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelOffsetPropertyName = "pixelOffset";
 
         /// <summary>
         /// The name of the <c>eyeOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string EyeOffsetPropertyName = "eyeOffset";
 
         /// <summary>
         /// The name of the <c>horizontalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
         /// The name of the <c>verticalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string VerticalOriginPropertyName = "verticalOrigin";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>fillColor</c> property.
         /// </summary>
+        [NotNull]
         public const string FillColorPropertyName = "fillColor";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>translucencyByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
 
         /// <summary>
         /// The name of the <c>pixelOffsetScaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
 
         /// <summary>
         /// The name of the <c>scaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string ScaleByDistancePropertyName = "scaleByDistance";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>disableDepthTestDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<StringCesiumWriter> m_text = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(TextPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<FontCesiumWriter> m_font = new Lazy<FontCesiumWriter>(() => new FontCesiumWriter(FontPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<LabelStyleCesiumWriter> m_style = new Lazy<LabelStyleCesiumWriter>(() => new LabelStyleCesiumWriter(StylePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_showBackground = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowBackgroundPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_backgroundColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(BackgroundColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BackgroundPaddingCesiumWriter> m_backgroundPadding = new Lazy<BackgroundPaddingCesiumWriter>(() => new BackgroundPaddingCesiumWriter(BackgroundPaddingPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(() => new EyeOffsetCesiumWriter(EyeOffsetPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_fillColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(FillColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(ScaleByDistancePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_disableDepthTestDistance = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DisableDepthTestDistancePropertyName), false);
 
         /// <summary>

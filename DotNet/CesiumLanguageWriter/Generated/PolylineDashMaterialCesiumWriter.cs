@@ -19,26 +19,38 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>gapColor</c> property.
         /// </summary>
+        [NotNull]
         public const string GapColorPropertyName = "gapColor";
 
         /// <summary>
         /// The name of the <c>dashLength</c> property.
         /// </summary>
+        [NotNull]
         public const string DashLengthPropertyName = "dashLength";
 
         /// <summary>
         /// The name of the <c>dashPattern</c> property.
         /// </summary>
+        [NotNull]
         public const string DashPatternPropertyName = "dashPattern";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_gapColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(GapColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_dashLength = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DashLengthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<IntegerCesiumWriter> m_dashPattern = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(DashPatternPropertyName), false);
 
         /// <summary>

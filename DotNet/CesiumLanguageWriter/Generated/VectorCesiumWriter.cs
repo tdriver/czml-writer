@@ -19,32 +19,47 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>direction</c> property.
         /// </summary>
+        [NotNull]
         public const string DirectionPropertyName = "direction";
 
         /// <summary>
         /// The name of the <c>length</c> property.
         /// </summary>
+        [NotNull]
         public const string LengthPropertyName = "length";
 
         /// <summary>
         /// The name of the <c>minimumLengthInPixels</c> property.
         /// </summary>
+        [NotNull]
         public const string MinimumLengthInPixelsPropertyName = "minimumLengthInPixels";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DirectionCesiumWriter> m_direction = new Lazy<DirectionCesiumWriter>(() => new DirectionCesiumWriter(DirectionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_length = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LengthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_minimumLengthInPixels = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumLengthInPixelsPropertyName), false);
 
         /// <summary>

@@ -19,134 +19,200 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>positions</c> property.
         /// </summary>
+        [NotNull]
         public const string PositionsPropertyName = "positions";
 
         /// <summary>
         /// The name of the <c>holes</c> property.
         /// </summary>
+        [NotNull]
         public const string HolesPropertyName = "holes";
 
         /// <summary>
         /// The name of the <c>arcType</c> property.
         /// </summary>
+        [NotNull]
         public const string ArcTypePropertyName = "arcType";
 
         /// <summary>
         /// The name of the <c>height</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightPropertyName = "height";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>extrudedHeight</c> property.
         /// </summary>
+        [NotNull]
         public const string ExtrudedHeightPropertyName = "extrudedHeight";
 
         /// <summary>
         /// The name of the <c>extrudedHeightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string ExtrudedHeightReferencePropertyName = "extrudedHeightReference";
 
         /// <summary>
         /// The name of the <c>stRotation</c> property.
         /// </summary>
+        [NotNull]
         public const string StRotationPropertyName = "stRotation";
 
         /// <summary>
         /// The name of the <c>granularity</c> property.
         /// </summary>
+        [NotNull]
         public const string GranularityPropertyName = "granularity";
 
         /// <summary>
         /// The name of the <c>fill</c> property.
         /// </summary>
+        [NotNull]
         public const string FillPropertyName = "fill";
 
         /// <summary>
         /// The name of the <c>material</c> property.
         /// </summary>
+        [NotNull]
         public const string MaterialPropertyName = "material";
 
         /// <summary>
         /// The name of the <c>outline</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>perPositionHeight</c> property.
         /// </summary>
+        [NotNull]
         public const string PerPositionHeightPropertyName = "perPositionHeight";
 
         /// <summary>
         /// The name of the <c>closeTop</c> property.
         /// </summary>
+        [NotNull]
         public const string CloseTopPropertyName = "closeTop";
 
         /// <summary>
         /// The name of the <c>closeBottom</c> property.
         /// </summary>
+        [NotNull]
         public const string CloseBottomPropertyName = "closeBottom";
 
         /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
+        [NotNull]
         public const string ShadowsPropertyName = "shadows";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>classificationType</c> property.
         /// </summary>
+        [NotNull]
         public const string ClassificationTypePropertyName = "classificationType";
 
         /// <summary>
         /// The name of the <c>zIndex</c> property.
         /// </summary>
+        [NotNull]
         public const string ZIndexPropertyName = "zIndex";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PositionListOfListsCesiumWriter> m_holes = new Lazy<PositionListOfListsCesiumWriter>(() => new PositionListOfListsCesiumWriter(HolesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<ArcTypeCesiumWriter>(() => new ArcTypeCesiumWriter(ArcTypePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ExtrudedHeightPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(ExtrudedHeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_stRotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StRotationPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GranularityPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_perPositionHeight = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(PerPositionHeightPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_closeTop = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseTopPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_closeBottom = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseBottomPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(() => new ClassificationTypeCesiumWriter(ClassificationTypePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ZIndexPropertyName), false);
 
         /// <summary>

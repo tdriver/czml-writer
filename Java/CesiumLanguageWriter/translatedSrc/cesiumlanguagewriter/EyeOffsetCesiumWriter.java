@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code EyeOffset} to a {@link CesiumOutputStream}. A {@code EyeOffset} is an offset in eye coordinates which can optionally vary over time. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<EyeOffsetCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<EyeOffsetCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */
+    @Nonnull
     public static final String CartesianPropertyName = "cartesian";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>> m_asCartesian;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>> m_asCartesian;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -156,19 +161,21 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter> createCartesian3() {
         return CesiumValuePropertyAdaptors.<EyeOffsetCesiumWriter> createCartesian3(this);
     }
@@ -177,19 +184,21 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<EyeOffsetCesiumWriter> createReference(this);
     }

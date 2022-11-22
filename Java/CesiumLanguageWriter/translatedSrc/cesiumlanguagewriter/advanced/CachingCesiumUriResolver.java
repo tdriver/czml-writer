@@ -6,9 +6,9 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.LinkedList;
 import agi.foundation.compatibility.LinkedListNode;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.ThreadHelper;
 import cesiumlanguagewriter.*;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 
@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
  * A URI resolver that downloads files and converts them to data URIs.  Downloaded files are cached
  using a least-recently used cache.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CachingCesiumUriResolver implements ICesiumUriResolver {
     /**
@@ -28,7 +28,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     */
     public CachingCesiumUriResolver(int max) {
         m_max = max;
-        m_dictionary = new LinkedHashMap<String, LinkedListNode<CacheItem>>();
+        m_dictionary = MapHelper.create();
         m_lruList = new LinkedList<CacheItem>();
     }
 
@@ -41,10 +41,8 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         if (uri == null) {
             throw new ArgumentNullException("uri");
         }
-        LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> node = null;
-        final LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem>[] out$node$1 = new LinkedListNode[] {
-            null
-        };
+        LinkedListNode<CacheItem> node = null;
+        final LinkedListNode<CacheItem>[] out$node$1 = new LinkedListNode[1];
         final boolean temp$0 = MapHelper.tryGetValue(m_dictionary, uri, out$node$1);
         node = out$node$1[0];
         if (temp$0) {
@@ -73,7 +71,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         if (resolvedUri == null) {
             throw new ArgumentNullException("resolvedUri");
         }
-        LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUri, resolvedUri));
+        LinkedListNode<CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUri, resolvedUri));
         MapHelper.add(m_dictionary, sourceUri, newNode);
         if (m_lruList.size() > m_max) {
             //trim least recently used
@@ -105,7 +103,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         return s_threadLocalInstance.get();
     }
 
-    private static ThreadLocal_0 s_threadLocalInstance = new ThreadLocal_0();
+    private static final ThreadLocal<CachingCesiumUriResolver> s_threadLocalInstance = ThreadHelper.createThreadLocal(null);
     private int m_max;
     @Nonnull
     private Map<String, LinkedListNode<CacheItem>> m_dictionary;
@@ -122,12 +120,5 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         public final String SourceUri;
         @Nonnull
         public final String ResolvedUri;
-    }
-
-    private static final class ThreadLocal_0 extends ThreadLocal<CachingCesiumUriResolver> {
-        @Override
-        protected CachingCesiumUriResolver initialValue() {
-            return (CachingCesiumUriResolver) null;
-        }
     }
 }

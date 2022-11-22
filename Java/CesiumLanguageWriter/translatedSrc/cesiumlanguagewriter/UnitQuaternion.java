@@ -7,6 +7,7 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.Enumeration;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -23,10 +24,10 @@ import javax.annotation.Nullable;
  </p>
  * @see Matrix3By3
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValueType {
     /**
@@ -42,7 +43,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @param y The Y coordinate.
     * @param z The Z coordinate.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitQuaternion(double w, double x, double y, double z) {
         this(w, x, y, z, Normalization.UNNORMALIZED);
@@ -59,7 +60,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     the magnitude of the original set of coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitQuaternion(double w, double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$w$0 = {
@@ -166,9 +167,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
             final double[] ref$z$7 = {
                 z
             };
-            final double[] out$magnitude$8 = {
-                0D
-            };
+            final double[] out$magnitude$8 = new double[1];
             normalizeCoordinates(ref$w$4, ref$x$5, ref$y$6, ref$z$7, out$magnitude$8);
             magnitude = out$magnitude$8[0];
             z = ref$z$7[0];
@@ -248,9 +247,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final UnitQuaternion multiply(@Nonnull UnitQuaternion quaternion) {
-        return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z, m_w * quaternion.m_x + m_x * quaternion.m_w - m_y * quaternion.m_z + m_z
-                * quaternion.m_y, m_w * quaternion.m_y + m_x * quaternion.m_z + m_y * quaternion.m_w - m_z * quaternion.m_x, m_w * quaternion.m_z - m_x * quaternion.m_y + m_y * quaternion.m_x + m_z
-                * quaternion.m_w);
+        return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z,
+                m_w * quaternion.m_x + m_x * quaternion.m_w - m_y * quaternion.m_z + m_z * quaternion.m_y, m_w * quaternion.m_y + m_x * quaternion.m_z + m_y * quaternion.m_w - m_z * quaternion.m_x,
+                m_w * quaternion.m_z - m_x * quaternion.m_y + m_y * quaternion.m_x + m_z * quaternion.m_w);
     }
 
     /**
@@ -363,7 +362,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
             throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeZero());
         }
         if (Double.isInfinite(magnitude[0])) {
-            throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
+            throw new NotFiniteNumberException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
         }
         w[0] /= magnitude[0];
         x[0] /= magnitude[0];
@@ -381,7 +380,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     private double m_z;
 
     private static enum Normalization implements Enumeration {
-        UNNORMALIZED(0), NORMALIZED(1);
+        UNNORMALIZED(0),
+        NORMALIZED(1);
+
         private final int value;
 
         Normalization(int value) {

@@ -6,6 +6,7 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -14,10 +15,10 @@ import javax.annotation.Nonnull;
  * <p>
  The corresponding 2-dimensional coordinates are {@link Rectangular} coordinates.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
@@ -226,9 +227,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final Cartesian rotate(@Nonnull Matrix3By3 rotation) {
-        return new Cartesian(rotation.getM11() * m_x + rotation.getM12() * m_y + rotation.getM13() * m_z, rotation.getM21() * m_x + rotation.getM22() * m_y + rotation.getM23() * m_z, rotation
-                .getM31()
-                * m_x + rotation.getM32() * m_y + rotation.getM33() * m_z);
+        return new Cartesian(rotation.getM11() * m_x + rotation.getM12() * m_y + rotation.getM13() * m_z, rotation.getM21() * m_x + rotation.getM22() * m_y + rotation.getM23() * m_z,
+                rotation.getM31() * m_x + rotation.getM32() * m_y + rotation.getM33() * m_z);
     }
 
     /**
@@ -244,8 +244,9 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
         double w = rotation.getW();
         double difference = w * w - rotation.getX() * rotation.getX() - rotation.getY() * rotation.getY() - rotation.getZ() * rotation.getZ();
         double dot = m_x * rotation.getX() + m_y * rotation.getY() + m_z * rotation.getZ();
-        return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.getZ() - m_z * rotation.getY()) + dot * rotation.getX()), difference * m_y + 2.0
-                * (w * (m_z * rotation.getX() - m_x * rotation.getZ()) + dot * rotation.getY()), difference * m_z + 2.0 * (w * (m_x * rotation.getY() - m_y * rotation.getX()) + dot * rotation.getZ()));
+        return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.getZ() - m_z * rotation.getY()) + dot * rotation.getX()),
+                difference * m_y + 2.0 * (w * (m_z * rotation.getX() - m_x * rotation.getZ()) + dot * rotation.getY()),
+                difference * m_z + 2.0 * (w * (m_x * rotation.getY() - m_y * rotation.getX()) + dot * rotation.getZ()));
     }
 
     /**
@@ -364,15 +365,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
     * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final UnitCartesian normalize() {
         double magnitude = 0D;
-        final double[] out$magnitude$1 = {
-            0D
-        };
+        final double[] out$magnitude$1 = new double[1];
         final UnitCartesian temp$0 = normalize(out$magnitude$1);
         magnitude = out$magnitude$1[0];
         return temp$0;
@@ -389,11 +388,11 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     the magnitude of the original set of {@link Cartesian} coordinates.
     * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning( {
-            "Unhandled attribute removed: Pure",
-            "Unhandled attribute removed: SuppressMessage"
+    @CS2JWarning({
+        "Unhandled attribute removed: Pure",
+        "Unhandled attribute removed: SuppressMessage"
     })
     @Nonnull
     public final UnitCartesian normalize(@Nonnull double[] magnitude) {

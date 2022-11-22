@@ -25,10 +25,10 @@ import javax.annotation.Nonnull;
  leap second in {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI), however.  Also, subtracting two
  UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class JulianDate implements Comparable<JulianDate>, IEquatable<JulianDate>, ImmutableValueType {
     /**
@@ -209,9 +209,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     public final JulianDate toTimeStandard(@Nonnull TimeStandard timeStandard) {
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         JulianDate result = new JulianDate();
-        final JulianDate[] out$result$1 = {
-            null
-        };
+        final JulianDate[] out$result$1 = new JulianDate[1];
         final boolean temp$0 = tryConvertTimeStandard(timeStandard, out$result$1);
         result = out$result$1[0];
         if (!temp$0) {
@@ -341,9 +339,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
             //then convert back if possible
             @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
             JulianDate result = new JulianDate();
-            final JulianDate[] out$result$3 = {
-                null
-            };
+            final JulianDate[] out$result$3 = new JulianDate[1];
             final boolean temp$2 = resultInAdditionStandard.tryConvertTimeStandard(getStandard(), out$result$3);
             result = out$result$3[0];
             if (temp$2) {
@@ -594,9 +590,9 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param other The date to compare to this instance.
     * @return {@code true} if {@code other} is identical to this instance; otherwise {@code false}.
     */
-    @CS2JWarning( {
-            "Unhandled attribute removed: Pure",
-            "Unhandled attribute removed: SuppressMessage"
+    @CS2JWarning({
+        "Unhandled attribute removed: Pure",
+        "Unhandled attribute removed: SuppressMessage"
     })
     public final boolean isIdentical(@Nonnull JulianDate other) {
         return m_day == other.m_day && m_secondsOfDay == other.m_secondsOfDay && m_timeStandard == other.m_timeStandard;
@@ -685,9 +681,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
         JulianDate self = new JulianDate();
         @CS2JInfo("Initialization of C# struct variable 'otherDate' added by translator.")
         JulianDate otherDate = new JulianDate();
-        final JulianDate[] out$otherDate$5 = {
-            null
-        };
+        final JulianDate[] out$otherDate$5 = new JulianDate[1];
         final boolean temp$4 = other.tryConvertTimeStandard(getStandard(), out$otherDate$5);
         otherDate = out$otherDate$5[0];
         if (temp$4) {

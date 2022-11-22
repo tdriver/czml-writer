@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumStreamWriter {
@@ -39,7 +39,7 @@ public class TestCesiumStreamWriter {
     public final void newPacketWritesObjectLiteral() {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
         packet.close();
-        Assert.assertEquals("{}", m_stringWriter.toString());
+        AssertHelper.assertEquals("{}", m_stringWriter.toString());
     }
 
     @Test

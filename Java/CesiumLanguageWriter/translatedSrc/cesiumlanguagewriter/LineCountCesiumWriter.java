@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code LineCount} to a {@link CesiumOutputStream}. A {@code LineCount} is the number of grid lines along each axis.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<LineCountCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<LineCountCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */
+    @Nonnull
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>> m_asCartesian2;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>> m_asCartesian2;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -165,19 +170,21 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> createCartesian2() {
         return CesiumValuePropertyAdaptors.<LineCountCesiumWriter> createCartesian2(this);
     }
@@ -186,19 +193,21 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<LineCountCesiumWriter> createReference(this);
     }

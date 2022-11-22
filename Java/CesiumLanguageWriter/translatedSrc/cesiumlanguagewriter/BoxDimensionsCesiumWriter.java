@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code BoxDimensions} to a {@link CesiumOutputStream}. A {@code BoxDimensions} is the width, depth, and height of a box.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWriter<BoxDimensionsCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWriter<BoxDimensionsCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */
+    @Nonnull
     public static final String CartesianPropertyName = "cartesian";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>> m_asCartesian;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>> m_asCartesian;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -156,19 +161,21 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter> createCartesian3() {
         return CesiumValuePropertyAdaptors.<BoxDimensionsCesiumWriter> createCartesian3(this);
     }
@@ -177,19 +184,21 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<BoxDimensionsCesiumWriter> createReference(this);
     }

@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  * A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
  * @param <TWrappedWriter> The type of the wrapped writer.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumWriterAdaptorWriteDeleteCallback<TWrappedWriter extends ICesiumPropertyWriter> extends Delegate {
     /**
@@ -48,17 +48,6 @@ public abstract class CesiumWriterAdaptorWriteDeleteCallback<TWrappedWriter exte
     * @param wrappedWriter The wrapper writer.
     */
     public abstract void invoke(@Nonnull TWrappedWriter wrappedWriter);
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof CesiumWriterAdaptorWriteDeleteCallback)) {
-            return false;
-        }
-        return super.equals(obj);
-    }
 
     /**
     * Create a delegate for the given interface. This can be used to create a delegate from a lambda expression.

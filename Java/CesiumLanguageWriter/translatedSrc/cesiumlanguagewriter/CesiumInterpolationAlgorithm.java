@@ -9,22 +9,25 @@ import javax.annotation.Nullable;
 /**
  * The algorithm to use for interpolation of sampled data.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumInterpolationAlgorithm implements Enumeration {
     /**
     * Simple linear interpolation between two samples.
     */
-    LINEAR(0), /**
-               * Lagrange polynomial approximation.
-               */
-    LAGRANGE(1), /**
-                 * Hermite polynomial approximation.
-                 */
+    LINEAR(0),
+    /**
+    * Lagrange polynomial approximation.
+    */
+    LAGRANGE(1),
+    /**
+    * Hermite polynomial approximation.
+    */
     HERMITE(2);
+
     private final int value;
 
     CesiumInterpolationAlgorithm(int value) {

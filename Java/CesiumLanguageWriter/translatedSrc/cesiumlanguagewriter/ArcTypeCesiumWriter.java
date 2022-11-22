@@ -10,26 +10,31 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ArcType} to a {@link CesiumOutputStream}. A {@code ArcType} is the type of an arc.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class ArcTypeCesiumWriter extends CesiumPropertyWriter<ArcTypeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumArcTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code arcType} property.
     */
+    @Nonnull
     public static final String ArcTypePropertyName = "arcType";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> m_asArcType;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> m_asArcType;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -136,19 +141,21 @@ public class ArcTypeCesiumWriter extends CesiumPropertyWriter<ArcTypeCesiumWrite
     * Returns a wrapper for this instance that implements {@link ICesiumArcTypeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> asArcType() {
         return m_asArcType.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> createAsArcType() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(this, "createArcType") {
-                    public cesiumlanguagewriter.advanced.CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> invoke() {
-                        return createArcType();
-                    }
-                }, false);
+        return new Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(new Func1<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(this, "createArcType") {
+            public CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> invoke() {
+                return createArcType();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> createArcType() {
         return CesiumValuePropertyAdaptors.<ArcTypeCesiumWriter> createArcType(this);
     }
@@ -157,19 +164,21 @@ public class ArcTypeCesiumWriter extends CesiumPropertyWriter<ArcTypeCesiumWrite
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<ArcTypeCesiumWriter> createReference(this);
     }

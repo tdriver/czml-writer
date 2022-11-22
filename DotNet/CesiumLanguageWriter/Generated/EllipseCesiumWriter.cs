@@ -19,122 +19,182 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>semiMajorAxis</c> property.
         /// </summary>
+        [NotNull]
         public const string SemiMajorAxisPropertyName = "semiMajorAxis";
 
         /// <summary>
         /// The name of the <c>semiMinorAxis</c> property.
         /// </summary>
+        [NotNull]
         public const string SemiMinorAxisPropertyName = "semiMinorAxis";
 
         /// <summary>
         /// The name of the <c>height</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightPropertyName = "height";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>extrudedHeight</c> property.
         /// </summary>
+        [NotNull]
         public const string ExtrudedHeightPropertyName = "extrudedHeight";
 
         /// <summary>
         /// The name of the <c>extrudedHeightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string ExtrudedHeightReferencePropertyName = "extrudedHeightReference";
 
         /// <summary>
         /// The name of the <c>rotation</c> property.
         /// </summary>
+        [NotNull]
         public const string RotationPropertyName = "rotation";
 
         /// <summary>
         /// The name of the <c>stRotation</c> property.
         /// </summary>
+        [NotNull]
         public const string StRotationPropertyName = "stRotation";
 
         /// <summary>
         /// The name of the <c>granularity</c> property.
         /// </summary>
+        [NotNull]
         public const string GranularityPropertyName = "granularity";
 
         /// <summary>
         /// The name of the <c>fill</c> property.
         /// </summary>
+        [NotNull]
         public const string FillPropertyName = "fill";
 
         /// <summary>
         /// The name of the <c>material</c> property.
         /// </summary>
+        [NotNull]
         public const string MaterialPropertyName = "material";
 
         /// <summary>
         /// The name of the <c>outline</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>numberOfVerticalLines</c> property.
         /// </summary>
+        [NotNull]
         public const string NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
 
         /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
+        [NotNull]
         public const string ShadowsPropertyName = "shadows";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>classificationType</c> property.
         /// </summary>
+        [NotNull]
         public const string ClassificationTypePropertyName = "classificationType";
 
         /// <summary>
         /// The name of the <c>zIndex</c> property.
         /// </summary>
+        [NotNull]
         public const string ZIndexPropertyName = "zIndex";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_semiMajorAxis = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SemiMajorAxisPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_semiMinorAxis = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SemiMinorAxisPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ExtrudedHeightPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(ExtrudedHeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_stRotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StRotationPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GranularityPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<IntegerCesiumWriter> m_numberOfVerticalLines = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(NumberOfVerticalLinesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(() => new ClassificationTypeCesiumWriter(ClassificationTypePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ZIndexPropertyName), false);
 
         /// <summary>

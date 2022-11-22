@@ -10,27 +10,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code DoubleList} to a {@link CesiumOutputStream}. A {@code DoubleList} is a list of floating-point numbers.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumDoubleListValuePropertyWriter,
-        ICesiumReferenceListValuePropertyWriter {
+public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumDoubleListValuePropertyWriter, ICesiumReferenceListValuePropertyWriter {
     /**
     * The name of the {@code array} property.
     */
+    @Nonnull
     public static final String ArrayPropertyName = "array";
     /**
     * The name of the {@code references} property.
     */
+    @Nonnull
     public static final String ReferencesPropertyName = "references";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> m_asArray;
-    private Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> m_asReferences;
+    @Nonnull
+    private final Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> m_asArray;
+    @Nonnull
+    private final Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> m_asReferences;
 
     /**
     * Initializes a new instance.
@@ -98,19 +103,21 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
     * Returns a wrapper for this instance that implements {@link ICesiumDoubleListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> asArray() {
         return m_asArray.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> createAsArray() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createDoubleList") {
-                    public cesiumlanguagewriter.advanced.CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
-                        return createDoubleList();
-                    }
-                }, false);
+        return new Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(new Func1<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createDoubleList") {
+            public CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
+                return createDoubleList();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> createDoubleList() {
         return CesiumValuePropertyAdaptors.<DoubleListCesiumWriter> createDoubleList(this);
     }
@@ -119,19 +126,21 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> asReferences() {
         return m_asReferences.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> createAsReferences() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createReferenceList") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
-                        return createReferenceList();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(new Func1<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createReferenceList") {
+            public CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
+                return createReferenceList();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> createReferenceList() {
         return CesiumValuePropertyAdaptors.<DoubleListCesiumWriter> createReferenceList(this);
     }

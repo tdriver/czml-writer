@@ -19,122 +19,182 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>image</c> property.
         /// </summary>
+        [NotNull]
         public const string ImagePropertyName = "image";
 
         /// <summary>
         /// The name of the <c>scale</c> property.
         /// </summary>
+        [NotNull]
         public const string ScalePropertyName = "scale";
 
         /// <summary>
         /// The name of the <c>pixelOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelOffsetPropertyName = "pixelOffset";
 
         /// <summary>
         /// The name of the <c>eyeOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string EyeOffsetPropertyName = "eyeOffset";
 
         /// <summary>
         /// The name of the <c>horizontalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
         /// The name of the <c>verticalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string VerticalOriginPropertyName = "verticalOrigin";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>rotation</c> property.
         /// </summary>
+        [NotNull]
         public const string RotationPropertyName = "rotation";
 
         /// <summary>
         /// The name of the <c>alignedAxis</c> property.
         /// </summary>
+        [NotNull]
         public const string AlignedAxisPropertyName = "alignedAxis";
 
         /// <summary>
         /// The name of the <c>sizeInMeters</c> property.
         /// </summary>
+        [NotNull]
         public const string SizeInMetersPropertyName = "sizeInMeters";
 
         /// <summary>
         /// The name of the <c>width</c> property.
         /// </summary>
+        [NotNull]
         public const string WidthPropertyName = "width";
 
         /// <summary>
         /// The name of the <c>height</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightPropertyName = "height";
 
         /// <summary>
         /// The name of the <c>scaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string ScaleByDistancePropertyName = "scaleByDistance";
 
         /// <summary>
         /// The name of the <c>translucencyByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
 
         /// <summary>
         /// The name of the <c>pixelOffsetScaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
 
         /// <summary>
         /// The name of the <c>imageSubRegion</c> property.
         /// </summary>
+        [NotNull]
         public const string ImageSubRegionPropertyName = "imageSubRegion";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>disableDepthTestDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(() => new EyeOffsetCesiumWriter(EyeOffsetPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<AlignedAxisCesiumWriter> m_alignedAxis = new Lazy<AlignedAxisCesiumWriter>(() => new AlignedAxisCesiumWriter(AlignedAxisPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_sizeInMeters = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(SizeInMetersPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(ScaleByDistancePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BoundingRectangleCesiumWriter> m_imageSubRegion = new Lazy<BoundingRectangleCesiumWriter>(() => new BoundingRectangleCesiumWriter(ImageSubRegionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_disableDepthTestDistance = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DisableDepthTestDistancePropertyName), false);
 
         /// <summary>

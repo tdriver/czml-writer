@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.ResourceBundle;
@@ -14,8 +16,9 @@ import javax.annotation.Nonnull;
 public final class ResourceBundleHelper {
     private ResourceBundleHelper() {}
 
+    @Nonnull
     public static ResourceBundle getBundle(@Nonnull String baseName) {
-        ArgumentNullException.assertNonNull(baseName, "baseName");
+        assertNonNull(baseName, "baseName");
 
         int dotIndex = baseName.lastIndexOf(".");
         String packageName = StringHelper.toLowerInvariant(baseName.substring(0, dotIndex));

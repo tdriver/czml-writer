@@ -11,27 +11,32 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code BackgroundPadding} to a {@link CesiumOutputStream}. A {@code BackgroundPadding} is the amount of horizontal and vertical padding, in pixels, between a label's text and its background.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyWriter<BackgroundPaddingCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyWriter<BackgroundPaddingCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */
+    @Nonnull
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> m_asCartesian2;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> m_asCartesian2;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -165,19 +170,21 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter> createCartesian2() {
         return CesiumValuePropertyAdaptors.<BackgroundPaddingCesiumWriter> createCartesian2(this);
     }
@@ -186,19 +193,21 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<BackgroundPaddingCesiumWriter> createReference(this);
     }

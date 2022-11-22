@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter extends ICesiumPropertyWriter, TValue> extends Delegate {
     /**
@@ -52,17 +52,6 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter extends IC
     * @param value The value.
     */
     public abstract void invoke(@Nonnull TWrappedWriter wrappedWriter, TValue value);
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof CesiumWriterAdaptorWriteCallback)) {
-            return false;
-        }
-        return super.equals(obj);
-    }
 
     /**
     * Create a delegate for the given interface. This can be used to create a delegate from a lambda expression.

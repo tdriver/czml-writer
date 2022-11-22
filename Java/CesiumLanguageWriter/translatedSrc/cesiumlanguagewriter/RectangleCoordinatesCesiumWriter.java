@@ -11,32 +11,39 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code RectangleCoordinates} to a {@link CesiumOutputStream}. A {@code RectangleCoordinates} is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter> implements ICesiumDeletablePropertyWriter,
-        ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code wsen} property.
     */
+    @Nonnull
     public static final String WsenPropertyName = "wsen";
     /**
     * The name of the {@code wsenDegrees} property.
     */
+    @Nonnull
     public static final String WsenDegreesPropertyName = "wsenDegrees";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsen;
-    private Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsenDegrees;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsen;
+    @Nonnull
+    private final Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsenDegrees;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -218,19 +225,22 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> asWsen() {
         return m_asWsen.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> createAsWsen() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createCartographicRectangleRadians") {
-                    public cesiumlanguagewriter.advanced.CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
+        return new Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
+                new Func1<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createCartographicRectangleRadians") {
+                    public CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
                         return createCartographicRectangleRadians();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> createCartographicRectangleRadians() {
         return CesiumValuePropertyAdaptors.<RectangleCoordinatesCesiumWriter> createCartographicRectangleRadians(this);
     }
@@ -239,19 +249,22 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> asWsenDegrees() {
         return m_asWsenDegrees.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> createAsWsenDegrees() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createCartographicRectangleDegrees") {
-                    public cesiumlanguagewriter.advanced.CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
+        return new Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
+                new Func1<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createCartographicRectangleDegrees") {
+                    public CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
                         return createCartographicRectangleDegrees();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> createCartographicRectangleDegrees() {
         return CesiumValuePropertyAdaptors.<RectangleCoordinatesCesiumWriter> createCartographicRectangleDegrees(this);
     }
@@ -260,19 +273,22 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
+                new Func1<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createReference") {
+                    public CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
                         return createReference();
                     }
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<RectangleCoordinatesCesiumWriter> createReference(this);
     }

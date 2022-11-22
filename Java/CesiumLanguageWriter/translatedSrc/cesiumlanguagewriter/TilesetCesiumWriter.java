@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
@@ -17,36 +17,42 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Tileset} to a {@link CesiumOutputStream}. A {@code Tileset} is a 3D Tiles tileset.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWriter> {
     /**
     * The name of the {@code show} property.
     */
+    @Nonnull
     public static final String ShowPropertyName = "show";
     /**
     * The name of the {@code uri} property.
     */
+    @Nonnull
     public static final String UriPropertyName = "uri";
     /**
     * The name of the {@code maximumScreenSpaceError} property.
     */
+    @Nonnull
     public static final String MaximumScreenSpaceErrorPropertyName = "maximumScreenSpaceError";
-    private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
         }
     }, false);
-    private Lazy<UriCesiumWriter> m_uri = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
-        public cesiumlanguagewriter.UriCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<UriCesiumWriter> m_uri = new Lazy<UriCesiumWriter>(new Func1<UriCesiumWriter>() {
+        public UriCesiumWriter invoke() {
             return new UriCesiumWriter(UriPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_maximumScreenSpaceError = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_maximumScreenSpaceError = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
+        public DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(MaximumScreenSpaceErrorPropertyName);
         }
     }, false);
@@ -98,13 +104,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -113,13 +115,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -128,13 +126,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -144,13 +138,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param propertyName The property on the referenced object.
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -160,13 +150,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -192,13 +178,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param resource A resource object describing external data.
     */
     public final void writeUriProperty(CesiumResource resource) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(resource);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(resource);
         }
     }
 
@@ -208,13 +190,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
     public final void writeUriProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(uri, resourceBehavior);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resourceBehavior);
         }
     }
 
@@ -224,13 +202,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
     public final void writeUriProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(uri, resourceBehavior);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resourceBehavior);
         }
     }
 
@@ -240,13 +214,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
     public final void writeUriProperty(URI uri, ICesiumUriResolver resolver) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(uri, resolver);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resolver);
         }
     }
 
@@ -256,13 +226,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
     public final void writeUriProperty(String uri, ICesiumUriResolver resolver) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(uri, resolver);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(uri, resolver);
         }
     }
 
@@ -271,13 +237,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param image The image. A data URI will be created for this image, using PNG encoding.
     */
     public final void writeUriProperty(RenderedImage image) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(image);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(image);
         }
     }
 
@@ -287,13 +249,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
     public final void writeUriProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeUri(image, imageFormat);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeUri(image, imageFormat);
         }
     }
 
@@ -302,13 +260,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The reference.
     */
     public final void writeUriPropertyReference(Reference value) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -317,13 +271,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The reference.
     */
     public final void writeUriPropertyReference(String value) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -333,13 +283,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param propertyName The property on the referenced object.
     */
     public final void writeUriPropertyReference(String identifier, String propertyName) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -349,13 +295,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeUriPropertyReference(String identifier, String[] propertyNames) {
-        {
-            UriCesiumWriter writer = openUriProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<UriCesiumWriter> using$0 = new Using<UriCesiumWriter>(openUriProperty())) {
+            final UriCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -381,13 +323,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The value.
     */
     public final void writeMaximumScreenSpaceErrorProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -397,13 +335,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param values The values corresponding to each date.
     */
     public final void writeMaximumScreenSpaceErrorProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -415,13 +349,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param length The number of elements to write.
     */
     public final void writeMaximumScreenSpaceErrorProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -430,13 +360,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The reference.
     */
     public final void writeMaximumScreenSpaceErrorPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -445,13 +371,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param value The reference.
     */
     public final void writeMaximumScreenSpaceErrorPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -461,13 +383,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param propertyName The property on the referenced object.
     */
     public final void writeMaximumScreenSpaceErrorPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -477,13 +395,9 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeMaximumScreenSpaceErrorPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openMaximumScreenSpaceErrorProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openMaximumScreenSpaceErrorProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 }
